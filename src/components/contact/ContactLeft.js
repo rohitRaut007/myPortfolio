@@ -13,11 +13,10 @@ const ContactLeft = () => {
       <div className="flex flex-col gap-4">
         <h3 className="text-3xl font-bold text-white">Rohit Raut</h3>
         <p className="text-lg font-normal text-gray-400">
-          MERN Stack Developer
+          WEB AND ANDROID Developer
         </p>
         <p className="text-base text-gray-400 tracking-wide">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
-          ipsam autem cumque, accusantium dicta odio.
+          Connect with Me
         </p>
         <p className="text-base text-gray-400 flex items-center gap-2">
           Phone: <span className="text-lightText">+91 7769977012</span>

@@ -35,7 +35,7 @@ const LeftBanner = () => {
           />
         </h2>
         <p className="text-base font-bodyFont leading-6 tracking-wide">
-        Motivated Computer Science Engineering student with a strong passion for Android and Web development. Proficient in Java, Kotlin, Python, and UI/UX design, with a focus on building user-friendly mobile applications. Seeking opportunities to apply my skills and contribute to innovative projects at leading tech companies.
+        I am a 4th-year B.Tech Computer Science & Engineering student at Deogiri Institute of Engineering and Management Studies. I am passionate about Android development, proficient in Java, Kotlin, Python, and UI/UX design, and focused on building user-friendly mobile applications.
         </p>
       </div>
       <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
