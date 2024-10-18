@@ -11,7 +11,21 @@ const Navbar = () => {
   return (
     <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-gray-600">
       <div>
-        <img src={logo} alt="logo" />
+      <h1
+      style={{
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '28px',
+        color: '#ff5733',
+        textShadow: '1px 1px 4px rgba(0, 0, 0, 0.2)',
+        fontWeight: 'bold',
+        letterSpacing: '2px',
+        background: 'linear-gradient(90deg, #ff8a00, #e52e71)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}
+    >
+      Rohit Raut
+    </h1>
       </div>
       <div>
         <ul className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
