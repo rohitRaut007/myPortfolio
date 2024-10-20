@@ -54,7 +54,7 @@ const LeftBanner = () => {
                 <FaInstagram />
               </span>
             </a>
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
+            <a href="https://x.com/rohit_raut007" target="blank">
               <span className="bannerIcon">
                 <FaTwitter />
               </span>

@@ -22,7 +22,6 @@ const Education = () => {
             result="7.02 CGPA"
             des="Currently persuing my final year at DIEMS in computer Science and Engineering Branch"
           />
-         
         </div>
       </div>
       {/* part Two */}
@@ -48,8 +47,6 @@ const Education = () => {
             des="Maharashtra State Board of Secondary Education At Baliram
               Patil Vidyalaya, cidco Aurangabad"
           />
-          
-          
         </div>
       </div>
     </motion.div>
