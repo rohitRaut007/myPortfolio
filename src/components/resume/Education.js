@@ -22,17 +22,7 @@ const Education = () => {
             result="7.02 CGPA"
             des="Currently persuing my final year at DIEMS in computer Science and Engineering Branch"
           />
-        </div>
-      </div>
-      {/* part Two */}
-
-      <div>
-        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-designColor tracking-[4px]"></p>
-          <h2 className="text-3xl md:text-4xl font-bold"> </h2>
-        </div>
-        <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
-        <ResumeCard
+           <ResumeCard
             title="12th (Senior Secondary Education)"
             subTitle="Mulana Aazd college (2019 - 2021)"
             result="91 %"
@@ -49,6 +39,17 @@ const Education = () => {
           />
         </div>
       </div>
+      {/* part Two */}
+
+      {/* <div>
+        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
+          <p className="text-sm text-designColor tracking-[4px]"></p>
+          <h2 className="text-3xl md:text-4xl font-bold"> </h2>
+        </div>
+        <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+       
+        </div>
+      </div> */}
     </motion.div>
   );
 };
