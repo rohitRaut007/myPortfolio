@@ -8,6 +8,8 @@ import testimonialTwo from "./images/testmonial/testimonialTwo.png";
 import quote from "./images/testmonial/quote.png";
 import contactImg from "./images/contact/contactImg.png";
 import shotEasy from "./images/projects/shotEasy.jpg"
+import project1 from "./images/projects/project1.png";
+import rseditor from "./images/projects/rseditor.png"
 
 export {
   logo,
@@ -19,5 +21,7 @@ export {
   testimonialTwo,
   quote,
   contactImg,
+  project1,
+  rseditor,
   shotEasy
 };

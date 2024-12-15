@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from '../layouts/Title'
-import { projectOne, projectTwo, projectThree,shotEasy } from "../../assets/index";
+import { projectOne, projectTwo, projectThree,shotEasy,project1, rseditor } from "../../assets/index";
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -20,23 +20,28 @@ const Projects = () => {
           title="THE COMPLETE MEAL"
           des=" The Complete Meal App is Fitness app developed in Kotlin.
           It is a MVVM Architecture app that uses Spoonacular API for the Meals and Retrofit for API Integration."
-          src={projectOne}
+          src={project1}
+          link={'https://github.com/rohitRaut007/TheCompleteMeal'}
         />
         <ProjectsCard
           title="News App"
           des=" It is the News Application Developed using mvvm, coroutines, room database, navigation component and retrofit in android studio kotlin "
           src={projectTwo}
+          link={'https://github.com/rohitRaut007/NewsApp'}
         />
         <ProjectsCard
           title="RS EDITOR"
           des="Online code Editor college project that can compile and run up to 6 languages. Use of API JUDGE0, developed in HTML,
 CSS, JavaScript, and PHP for database"
-          src={projectThree}
+          src={rseditor}
+          link={'https://github.com/rohitRaut007/RS-Editor'}
         />
         <ProjectsCard
           title="CryptoTracker"
           des="CryptoTracker is an app designed to provide real-time cryptocurrency status updates, including detailed information on various cryptocurrencies. Built with Jetpack Compose and adhering to the MVI (Model-View-Intent) architecture, the app leverages Ktor for efficient API integration to fetch up-to-date crypto data. A streamlined Material UI design ensures a smooth and user-friendly experience, making it easy for users to stay informed about the latest crypto trends directly from their device."
           src={shotEasy}
+          link={'https://github.com/rohitRaut007/CryptoTracker'}
+          
         />
        
       </div>
