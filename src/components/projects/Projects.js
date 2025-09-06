@@ -1,7 +1,6 @@
 import React from 'react'
 import Title from '../layouts/Title'
-import {  projectTwo,shotEasy,project1, rseditor } from "../../assets/index";
-import ProjectsCard from './ProjectsCard';
+import ProjectsCard from './ProjectsCard'
 
 const Projects = () => {
   return (
@@ -16,37 +15,50 @@ const Projects = () => {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
+        
+        {/* React Native Meditation App */}
         <ProjectsCard
-          title="THE COMPLETE MEAL"
-          des=" The Complete Meal App is Fitness app developed in Kotlin.
-          It is a MVVM Architecture app that uses Spoonacular API for the Meals and Retrofit for API Integration."
-          src={project1}
-          link={'https://github.com/rohitRaut007/TheCompleteMeal'}
+          title="React Native Meditation App (Numa)"
+          des="Developed a guided meditation app with 95% crash-free sessions. Implemented advanced animations using Reanimated 2 + Skia, improving render time by 40%. Designed responsive UI serving both iOS and Android."
+          video="/videos/numa_mockup.mp4"
+          link="https://github.com/rohitRaut007" // replace with actual repo if available
         />
+
+        {/* MERN Stack Real-Time Chat Application */}
         <ProjectsCard
-          title="News App"
-          des=" It is the News Application Developed using mvvm, coroutines, room database, navigation component and retrofit in android studio kotlin "
-          src={projectTwo}
-          link={'https://github.com/rohitRaut007/NewsApp'}
+          title="MERN Stack Real-Time Chat App"
+          des="Built a real-time messaging platform with React.js, Node.js, Express, and MongoDB. Implemented Socket.IO for instant messaging and status tracking. Fully responsive with Tailwind CSS."
+          video="/videos/mern_demo.mp4"
+          link="https://realtime-chat-application-ebjb.onrender.com/"
         />
+
+        {/* Enterprise POS System */}
         <ProjectsCard
-          title="RS EDITOR"
-          des="Online code Editor college project that can compile and run up to 6 languages. Use of API JUDGE0, developed in HTML,
-CSS, JavaScript, and PHP for database"
-          src={rseditor}
-          link={'https://github.com/rohitRaut007/RS-Editor'}
+          title="Enterprise POS System (Flutter + Hive)"
+          des="Production-ready POS solution with Flutter 3.16 and Hive for offline DB. Achieved 99.9% inventory data accuracy and managed ₹50,000+ monthly transactions. Features include real-time stock management and invoice printing."
+          video="/videos/entc_demo.mp4"
+          link="https://github.com/rohitRaut007" // replace with actual repo if available
         />
+
+        {/* The News App */}
         <ProjectsCard
-          title="CryptoTracker"
-          des="CryptoTracker is an app designed to provide real-time cryptocurrency status updates, including detailed information on various cryptocurrencies. Built with Jetpack Compose and adhering to the MVI (Model-View-Intent) architecture, the app leverages Ktor for efficient API integration to fetch up-to-date crypto data. A streamlined Material UI design ensures a smooth and user-friendly experience, making it easy for users to stay informed about the latest crypto trends directly from their device."
-          src={shotEasy}
-          link={'https://github.com/rohitRaut007/CryptoTracker'}
-          
+          title="The News App (Kotlin + MVVM)"
+          des="Modern news reader app with latest headlines, live updates via REST APIs, bookmarking, and personalized reading history. Built with MVVM architecture, Room DB, and Material UI design."
+          video="/videos/news_demo.mp4"
+          link="https://github.com/rohitRaut007/NewsApp"
         />
-       
+
+        {/* Portfolio Website with GSAP */}
+        <ProjectsCard
+          title="Interactive Landing Website"
+          des="A modern Shampagne website built with React.js and Tailwind CSS, enhanced with GSAP animations for smooth scrolling, transitions, and interactive elements. Optimized for performance and responsive across all devices."
+          video="/videos/gsap_demo.mp4"
+          link="https://rohitraut.vercel.app/"
+        />
+        
       </div>
     </section>
-  );
+  )
 }
 
 export default Projects

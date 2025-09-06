@@ -23,5 +23,5 @@ export {
   contactImg,
   project1,
   rseditor,
-  shotEasy
+  shotEasy,
 };
