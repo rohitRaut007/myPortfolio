@@ -4,7 +4,7 @@ import { contactImg } from "../../assets/index";
 
 const ContactLeft = () => {
   return (
-    <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#0c140c] to-[#0f160f] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
+    <div className="w-full lgl:w-[35%] h-full p-4 lgl:p-8 rounded-lg flex flex-col gap-8 justify-center" style={{ background: "var(--c-bg-card)", border: "1px solid var(--c-border)" }}>
       <img
         className="w-full h-64 object-cover rounded-lg mb-2"
         src={contactImg}
@@ -12,8 +12,8 @@ const ContactLeft = () => {
       />
       <div className="flex flex-col gap-4">
         <div>
-          <h3 className="text-3xl font-bold text-white">Rohit Raut</h3>
-          <p className="text-sm font-medium mt-1" style={{ color: "#3DDC84" }}>
+          <h3 className="text-3xl font-bold" style={{ color: "var(--c-text-1)" }}>Rohit Raut</h3>
+          <p className="text-sm font-medium mt-1" style={{ color: "var(--c-accent)" }}>
             React Native &amp; Mobile Developer
           </p>
         </div>
@@ -22,31 +22,31 @@ const ContactLeft = () => {
         <span
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium w-fit"
           style={{
-            background: "rgba(61,220,132,0.1)",
-            color: "#3DDC84",
-            border: "1px solid rgba(61,220,132,0.25)",
+            background: "var(--c-border)",
+            color: "var(--c-accent)",
+            border: "1px solid var(--c-border-s)",
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#3DDC84" }}></span>
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "var(--c-accent)" }}></span>
           Open to opportunities
         </span>
 
         <div className="flex flex-col gap-3 mt-2">
           <a
             href="mailto:rohit.raut2612@gmail.com"
-            className="flex items-center gap-3 text-sm text-gray-400 hover:text-designColor duration-300 group"
+            className="flex items-center gap-3 text-sm hover:text-designColor duration-300 group" style={{ color: "var(--c-text-3)" }}
           >
             <FaEnvelope className="text-designColor flex-shrink-0" />
             <span className="group-hover:underline">rohit.raut2612@gmail.com</span>
           </a>
           <a
             href="tel:+917769977012"
-            className="flex items-center gap-3 text-sm text-gray-400 hover:text-designColor duration-300"
+            className="flex items-center gap-3 text-sm hover:text-designColor duration-300" style={{ color: "var(--c-text-3)" }}
           >
             <FaPhone className="text-designColor flex-shrink-0" />
             +91 77699 77012
           </a>
-          <p className="flex items-center gap-3 text-sm text-gray-400">
+          <p className="flex items-center gap-3 text-sm" style={{ color: "var(--c-text-3)" }}>
             <FaMapMarkerAlt className="text-designColor flex-shrink-0" />
             Pune, Maharashtra, India
           </p>
@@ -54,7 +54,7 @@ const ContactLeft = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h2 className="text-xs uppercase font-titleFont tracking-widest text-gray-400">
+        <h2 className="text-xs uppercase font-titleFont tracking-widest" style={{ color: "var(--c-text-4)" }}>
           Find me on
         </h2>
         <div className="flex gap-3">

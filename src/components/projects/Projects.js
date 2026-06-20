@@ -25,7 +25,7 @@ const Projects = () => {
         {/* React Native Meditation App */}
         <ProjectsCard
           title="Meditation App"
-          des="Cross-platform meditation app with breathing exercises, session timers, and a daily streak system. Fully offline — all data stored locally with SQLite and Hive, no server dependency. Spent significant time on the animation layer using Reanimated and Skia to get fluid 60fps transitions on mid-range Android devices."
+          des="Cross-platform meditation app with breathing exercises, session timers, and a daily streak system. Fully offline: all data stored locally with SQLite and Hive, no server needed. Spent a lot of time on the animation layer with Reanimated and Skia to get fluid 60fps transitions on mid-range Android devices."
           video="/videos/numa_mockup.mp4"
           link="https://github.com/rohitRaut007"
         />
@@ -40,7 +40,7 @@ const Projects = () => {
 
         {/* News App */}
         <ProjectsCard
-          title="News App — Kotlin + MVVM"
+          title="News App: Kotlin + MVVM"
           des="Android news reader built in Kotlin with a clean MVVM pattern: ViewModel, LiveData, and a Repository layer. News data via Retrofit REST API, articles bookmarked locally with Room DB. Followed standard Android architecture guidelines with Material Design UI."
           video="/videos/news_demo.mp4"
           link="https://github.com/rohitRaut007/NewsApp"

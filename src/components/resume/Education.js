@@ -14,7 +14,7 @@ const Education = () => {
           <p className="text-sm text-designColor tracking-[4px]">2019 - 2025</p>
           <h2 className="text-3xl md:text-4xl font-bold">Education</h2>
         </div>
-        <div className="mt-6 lgl:mt-14 w-full pb-10 flex flex-col gap-10" style={{ borderLeft: "6px solid rgba(61,220,132,0.15)" }}>
+        <div className="mt-6 lgl:mt-14 w-full pb-10 flex flex-col gap-10" style={{ borderLeft: "6px solid var(--c-border)" }}>
           <ResumeCard
             title="Bachelor of Technology"
             subTitle="Computer Science & Engineering — Deogiri Institute of Engineering and Management Studies, DIEMS (2021 – 2025)"

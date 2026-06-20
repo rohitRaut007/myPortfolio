@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8c19a8f4.css",
-    "main.js": "/static/js/main.8700931c.js",
+    "main.css": "/static/css/main.31bb3685.css",
+    "main.js": "/static/js/main.a7627a77.js",
     "static/js/167.17de5dc1.chunk.js": "/static/js/167.17de5dc1.chunk.js",
     "static/js/295.659cddb5.chunk.js": "/static/js/295.659cddb5.chunk.js",
     "static/media/bannerImg.png": "/static/media/bannerImg.bf8f4207d0cb27e03b7f.png",
@@ -17,13 +17,13 @@
     "static/media/android-logo.svg": "/static/media/android-logo.e0131739c22fae6c3838d3c4ad14e6c0.svg",
     "index.html": "/index.html",
     "static/media/apple-logo.svg": "/static/media/apple-logo.47795ab3093ed9e9dadc6ce5245311d9.svg",
-    "main.8c19a8f4.css.map": "/static/css/main.8c19a8f4.css.map",
-    "main.8700931c.js.map": "/static/js/main.8700931c.js.map",
+    "main.31bb3685.css.map": "/static/css/main.31bb3685.css.map",
+    "main.a7627a77.js.map": "/static/js/main.a7627a77.js.map",
     "167.17de5dc1.chunk.js.map": "/static/js/167.17de5dc1.chunk.js.map",
     "295.659cddb5.chunk.js.map": "/static/js/295.659cddb5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c19a8f4.css",
-    "static/js/main.8700931c.js"
+    "static/css/main.31bb3685.css",
+    "static/js/main.a7627a77.js"
   ]
 }

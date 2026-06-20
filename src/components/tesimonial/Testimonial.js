@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Title from "../layouts/Title";
 
 const JET = "'JetBrains Mono', 'Roboto Mono', monospace";
-const G = "#3DDC84";
+const G = "var(--c-accent)";
 
 const HIGHLIGHTS = [
   "Full-stack frontend & backend development",
@@ -27,9 +27,9 @@ const Testimonial = () => {
       <div
         className="max-w-6xl mx-auto rounded-2xl overflow-hidden"
         style={{
-          background: "linear-gradient(145deg,#0c140c,#0f160f)",
-          border: "1px solid rgba(61,220,132,0.15)",
-          boxShadow: "0 0 60px rgba(61,220,132,0.05)",
+          background: "var(--c-bg-card)",
+          border: "1px solid var(--c-border)",
+          boxShadow: "none",
         }}
       >
         <div className="flex flex-col lgl:flex-row">
@@ -45,8 +45,8 @@ const Testimonial = () => {
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "8px",
                     padding: "6px 14px", borderRadius: "8px",
-                    background: "rgba(61,220,132,0.08)",
-                    border: "1px solid rgba(61,220,132,0.25)",
+                    background: "var(--c-border)",
+                    border: "1px solid var(--c-border-s)",
                   }}
                 >
                   <span style={{ fontSize: "18px" }}>🚀</span>
@@ -65,8 +65,8 @@ const Testimonial = () => {
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "5px",
                     padding: "4px 10px", borderRadius: "999px",
-                    background: "rgba(61,220,132,0.06)",
-                    border: "1px solid rgba(61,220,132,0.2)",
+                    background: "var(--c-border)",
+                    border: "1px solid var(--c-border-s)",
                     fontFamily: JET, fontSize: "10px", color: G,
                     letterSpacing: "0.08em",
                   }}
@@ -80,7 +80,7 @@ const Testimonial = () => {
               <div
                 style={{
                   fontFamily: JET, fontSize: "11px",
-                  color: "rgba(61,220,132,0.5)", letterSpacing: "0.06em",
+                  color: "var(--c-text-4)", letterSpacing: "0.06em",
                 }}
               >
                 📍 Key Biscayne, Florida, USA &nbsp;·&nbsp; Letter of Recommendation &nbsp;·&nbsp; 9 May 2026
@@ -93,7 +93,7 @@ const Testimonial = () => {
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "clamp(18px, 2vw, 22px)",
-                  fontWeight: 600, color: "#f0f6fc",
+                  fontWeight: 600, color: "var(--c-text-1)",
                   lineHeight: 1.55, letterSpacing: "-0.01em",
                 }}
               >
@@ -114,15 +114,15 @@ const Testimonial = () => {
                   style={{
                     display: "flex", alignItems: "center", gap: "10px",
                     padding: "8px 12px", borderRadius: "8px",
-                    background: "rgba(61,220,132,0.04)",
-                    border: "1px solid rgba(61,220,132,0.1)",
+                    background: "var(--c-bg-card-2)",
+                    border: "1px solid var(--c-border)",
                   }}
                 >
                   <span
                     style={{
                       width: "16px", height: "16px", borderRadius: "50%",
-                      background: "rgba(61,220,132,0.15)",
-                      border: "1px solid rgba(61,220,132,0.4)",
+                      background: "var(--c-border)",
+                      border: "1px solid var(--c-border-s)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       flexShrink: 0, fontSize: "9px", color: G,
                     }}
@@ -132,7 +132,7 @@ const Testimonial = () => {
                   <span
                     style={{
                       fontFamily: JET, fontSize: "12px",
-                      color: "#c4cfde", letterSpacing: "0.02em",
+                      color: "var(--c-text-2)", letterSpacing: "0.02em",
                     }}
                   >
                     {text}
@@ -145,13 +145,13 @@ const Testimonial = () => {
             <div
               style={{
                 paddingTop: "16px",
-                borderTop: "1px solid rgba(61,220,132,0.1)",
+                borderTop: "1px solid var(--c-border)",
               }}
             >
               <p
                 style={{
                   fontFamily: JET, fontSize: "12px",
-                  color: "#8b949e", letterSpacing: "0.04em",
+                  color: "var(--c-text-3)", letterSpacing: "0.04em",
                 }}
               >
                 — Utkarsh &nbsp;·&nbsp; Chief Operating Officer &nbsp;·&nbsp; Apex Labs
@@ -162,12 +162,12 @@ const Testimonial = () => {
                 rel="noopener noreferrer"
                 style={{
                   fontFamily: JET, fontSize: "10px",
-                  color: "rgba(61,220,132,0.4)", letterSpacing: "0.06em",
+                  color: "var(--c-text-4)", letterSpacing: "0.06em",
                   textDecoration: "none", marginTop: "4px", display: "block",
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = G)}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(61,220,132,0.4)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--c-text-4)")}
               >
                 apexbytetech.io ↗
               </a>
@@ -177,7 +177,7 @@ const Testimonial = () => {
           {/* ── RIGHT: Document preview + CTA ── */}
           <div
             className="w-full lgl:w-[45%] p-8 lgl:p-12 flex flex-col items-center justify-center gap-6"
-            style={{ borderLeft: "1px solid rgba(61,220,132,0.08)" }}
+            style={{ borderLeft: "1px solid var(--c-border)" }}
           >
             {/* Document card */}
             <div
@@ -189,7 +189,7 @@ const Testimonial = () => {
                 borderRadius: "12px",
                 padding: "24px 28px",
                 boxShadow: hovered
-                  ? "0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(61,220,132,0.4)"
+                  ? "0 8px 32px rgba(0,0,0,0.15), 0 0 0 1px var(--c-border-s)"
                   : "0 12px 40px rgba(0,0,0,0.4)",
                 transform: hovered ? "translateY(-4px)" : "none",
                 transition: "all 0.3s ease",
@@ -284,8 +284,8 @@ const Testimonial = () => {
                   letterSpacing: "0.06em",
                   padding: "12px 28px",
                   borderRadius: "8px",
-                  background: "rgba(61,220,132,0.08)",
-                  border: "1px solid rgba(61,220,132,0.35)",
+                  background: "var(--c-border)",
+                  border: "1px solid var(--c-border-s)",
                   color: G,
                   display: "inline-flex",
                   alignItems: "center",
@@ -293,13 +293,13 @@ const Testimonial = () => {
                   transition: "all 0.2s ease",
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.background = "rgba(61,220,132,0.14)";
+                  e.currentTarget.style.background = "var(--c-border-s)";
                   e.currentTarget.style.borderColor = G;
                   e.currentTarget.style.transform = "translateY(-1px)";
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.background = "rgba(61,220,132,0.08)";
-                  e.currentTarget.style.borderColor = "rgba(61,220,132,0.35)";
+                  e.currentTarget.style.background = "var(--c-border)";
+                  e.currentTarget.style.borderColor = "var(--c-border-s)";
                   e.currentTarget.style.transform = "none";
                 }}
               >
@@ -310,7 +310,7 @@ const Testimonial = () => {
             <p
               style={{
                 fontFamily: JET, fontSize: "10px",
-                color: "rgba(61,220,132,0.35)", letterSpacing: "0.06em",
+                color: "var(--c-border-s)", letterSpacing: "0.06em",
                 textAlign: "center",
               }}
             >

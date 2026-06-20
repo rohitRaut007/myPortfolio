@@ -13,7 +13,9 @@
       "Bash(sed 's/<svg role=\"img\" viewBox=\"0 0 24 24\"/<svg role=\"img\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"/' \"e:/myPortfolio/src/assets/images/android-logo.svg\")",
       "Bash(cp /tmp/android-fixed.svg \"e:/myPortfolio/src/assets/images/android-logo.svg\")",
       "Bash(sed 's/<svg role=\"img\" viewBox=\"0 0 24 24\"/<svg role=\"img\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"/' \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
-      "Bash(cp /tmp/apple-fixed.svg \"e:/myPortfolio/src/assets/images/apple-logo.svg\")"
+      "Bash(cp /tmp/apple-fixed.svg \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
+      "Bash(grep -rn --include=\"*.js\" -E \"\\(color|background|fill|stroke|borderColor\\).*['\\\\\"]#[0-9a-fA-F]{3,6}['\\\\\"]|\\(color|background\\).*rgba\\\\\\([0-9]\" e:/myPortfolio/src/components/)",
+      "Bash(grep -v \"//.*#\")"
     ]
   }
 }

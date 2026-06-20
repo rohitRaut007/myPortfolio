@@ -8,7 +8,7 @@ const featureData = [
   {
     icon: <FaMobile />,
     title: "React Native Development",
-    des: "Cross-platform iOS and Android apps shipped to both stores. From architecture through to App Store and Play Store release — owned the full mobile lifecycle.",
+    des: "Cross-platform iOS and Android apps shipped to both stores. Built the full mobile lifecycle, from architecture all the way to App Store and Play Store release.",
     large: true,
     accent: "#3DDC84",
   },
@@ -29,7 +29,7 @@ const featureData = [
   {
     icon: <AiFillRobot />,
     title: "AI Integration",
-    des: "OpenAI API integration and LLM-powered features built into production mobile apps — from prompt design to live deployment.",
+    des: "OpenAI API integration for production apps, covering prompt design through to live deployment.",
     large: false,
     accent: "#3DDC84",
   },
@@ -54,14 +54,14 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       }`}
       style={{
         background: hovered
-          ? "linear-gradient(145deg, #0f180f, #111a11)"
-          : "linear-gradient(145deg, #0c140c, #0f160f)",
+          ? "var(--c-bg-card-2)"
+          : "var(--c-bg-card)",
         border: hovered
-          ? "1px solid rgba(61,220,132,0.35)"
-          : "1px solid rgba(61,220,132,0.1)",
+          ? "1px solid var(--c-border-s)"
+          : "1px solid var(--c-border)",
         boxShadow: hovered
-          ? "0 0 30px rgba(61,220,132,0.1), inset 0 0 30px rgba(61,220,132,0.03)"
-          : "10px 10px 19px #050a05, -10px -10px 19px #0f170f",
+          ? "0 0 30px var(--c-border-s), inset 0 0 30px var(--c-border)"
+          : "10px 10px 19px var(--c-shadow), -10px -10px 19px var(--c-shadow-inv)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
       }}
     >
@@ -69,7 +69,7 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(61,220,132,0.25) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, var(--c-border-s) 1px, transparent 1px)`,
           backgroundSize: "20px 20px",
           maskImage: hovered
             ? "radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%)"
@@ -86,7 +86,7 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
         className="absolute top-0 left-0 w-32 h-32 pointer-events-none transition-opacity duration-500"
         style={{
           background:
-            "radial-gradient(circle at top left, rgba(61,220,132,0.08), transparent 70%)",
+            "radial-gradient(circle at top left, var(--c-border), transparent 70%)",
           opacity: hovered ? 1 : 0,
         }}
       />
@@ -95,12 +95,10 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       <div
         className="w-12 h-12 rounded-lg flex items-center justify-center text-xl transition-all duration-300"
         style={{
-          background: hovered
-            ? "rgba(61,220,132,0.15)"
-            : "rgba(61,220,132,0.08)",
-          border: "1px solid rgba(61,220,132,0.2)",
-          color: hovered ? "#3DDC84" : "rgba(61,220,132,0.6)",
-          boxShadow: hovered ? "0 0 12px rgba(61,220,132,0.2)" : "none",
+          background: hovered ? "var(--c-border-s)" : "var(--c-border)",
+          border: "1px solid var(--c-border-s)",
+          color: hovered ? "var(--c-accent)" : "var(--c-border-s)",
+          boxShadow: hovered ? "0 0 12px var(--c-border-s)" : "none",
         }}
       >
         {icon}
@@ -109,7 +107,7 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       {/* Title */}
       <h3
         className="text-lg lgl:text-xl font-bold font-titleFont transition-colors duration-300"
-        style={{ color: hovered ? "#ffffff" : "#e5e7eb" }}
+        style={{ color: hovered ? "var(--c-text-1)" : "var(--c-text-2)" }}
       >
         {title}
       </h3>
@@ -117,7 +115,7 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       {/* Description */}
       <p
         className="text-sm font-bodyFont leading-7 transition-colors duration-300"
-        style={{ color: hovered ? "#c4cfde" : "#6b7280" }}
+        style={{ color: hovered ? "var(--c-text-2)" : "var(--c-text-4)" }}
       >
         {des}
       </p>
@@ -126,7 +124,7 @@ const BentoCard = ({ icon, title, des, large, accent }) => {
       <div
         className="absolute bottom-0 left-0 h-[2px] transition-all duration-500"
         style={{
-          background: "linear-gradient(90deg, #3DDC84, transparent)",
+          background: "linear-gradient(90deg, var(--c-accent), transparent)",
           width: hovered ? "100%" : "0%",
         }}
       />
@@ -149,23 +147,23 @@ const Features = () => {
       {/* At-a-glance stats strip */}
       <div
         className="grid grid-cols-2 md:grid-cols-4 gap-px mb-10 rounded-xl overflow-hidden"
-        style={{ border: "1px solid rgba(61,220,132,0.12)" }}
+        style={{ border: "1px solid var(--c-border)" }}
       >
         {STATS.map(({ value, label }, i) => (
           <div
             key={i}
             className="flex flex-col items-center justify-center py-5 px-4 text-center"
-            style={{ background: "linear-gradient(145deg,#0c140c,#0f160f)" }}
+            style={{ background: "var(--c-bg-card)" }}
           >
             <span
               className="text-2xl font-bold font-titleFont"
-              style={{ color: "#3DDC84" }}
+              style={{ color: "var(--c-accent)" }}
             >
               {value}
             </span>
             <span
               className="text-xs font-bodyFont mt-1 tracking-wide"
-              style={{ color: "#6b7280" }}
+              style={{ color: "var(--c-text-4)" }}
             >
               {label}
             </span>
@@ -185,9 +183,9 @@ const Features = () => {
         <div
           className="hidden xl:flex flex-col gap-4 rounded-xl p-6 lgl:p-8 relative overflow-hidden"
           style={{
-            background: "linear-gradient(145deg, #0c140c, #0f160f)",
-            border: "1px solid rgba(61,220,132,0.1)",
-            boxShadow: "10px 10px 19px #050a05, -10px -10px 19px #0f170f",
+            background: "var(--c-bg-card)",
+            border: "1px solid var(--c-border)",
+            boxShadow: "none",
           }}
         >
           <div className="flex flex-col items-center justify-center flex-1 gap-5">
@@ -196,18 +194,18 @@ const Features = () => {
             <div className="flex items-center gap-2">
               <span
                 className="text-xs px-3 py-1 rounded-full font-bodyFont"
-                style={{ background: "rgba(61,220,132,0.08)", color: "rgba(61,220,132,0.8)", border: "1px solid rgba(61,220,132,0.2)" }}
+                style={{ background: "var(--c-border)", color: "var(--c-accent)", border: "1px solid var(--c-border-s)" }}
               >
                 🍎 App Store
               </span>
               <span
                 className="text-xs px-3 py-1 rounded-full font-bodyFont"
-                style={{ background: "rgba(61,220,132,0.08)", color: "rgba(61,220,132,0.8)", border: "1px solid rgba(61,220,132,0.2)" }}
+                style={{ background: "var(--c-border)", color: "var(--c-accent)", border: "1px solid var(--c-border-s)" }}
               >
                 ▶ Play Store
               </span>
             </div>
-            <p className="text-xs text-center font-bodyFont tracking-widest uppercase" style={{ color: "rgba(61,220,132,0.4)" }}>
+            <p className="text-xs text-center font-bodyFont tracking-widest uppercase" style={{ color: "var(--c-border-s)" }}>
               Cross-Platform · One Codebase
             </p>
           </div>
@@ -238,7 +236,7 @@ const MiniPhoneMockup = () => {
       <div
         style={{
           animation: "phoneFloat 3s ease-in-out infinite",
-          filter: "drop-shadow(0 0 18px rgba(61,220,132,0.25))",
+          filter: "drop-shadow(0 0 18px var(--c-border-s))",
         }}
       >
         {/* Phone frame */}
@@ -247,7 +245,7 @@ const MiniPhoneMockup = () => {
             width: "108px",
             height: "220px",
             borderRadius: "22px",
-            border: "2px solid rgba(61,220,132,0.45)",
+            border: "2px solid var(--c-border-s)",
             background: "#0d1117",
             overflow: "hidden",
             position: "relative",

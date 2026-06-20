@@ -7,8 +7,6 @@ import {
 
 const JET = "'JetBrains Mono', 'Roboto Mono', monospace";
 const DISPLAY = "'Space Grotesk', sans-serif";
-const G = "#3DDC84";
-const G_BORDER = "rgba(61,220,132,0.28)";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
@@ -20,7 +18,7 @@ const LeftBanner = () => {
   });
 
   return (
-    <div style={{ maxWidth: "600px", color: "#e9f1ec" }}>
+    <div style={{ maxWidth: "600px", color: "var(--c-text-2)" }}>
 
       {/* Availability badge */}
       <div style={{ marginBottom: "14px" }}>
@@ -28,9 +26,9 @@ const LeftBanner = () => {
           style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
             padding: "5px 14px", borderRadius: "999px",
-            background: "rgba(61,220,132,0.08)",
-            border: "1px solid rgba(61,220,132,0.3)",
-            fontFamily: JET, fontSize: "11px", color: G,
+            background: "var(--c-border)",
+            border: "1px solid var(--c-border-s)",
+            fontFamily: JET, fontSize: "11px", color: "var(--c-accent)",
             letterSpacing: "0.06em",
           }}
         >
@@ -40,19 +38,19 @@ const LeftBanner = () => {
               style={{
                 position: "absolute", display: "inline-flex",
                 width: "8px", height: "8px", borderRadius: "50%",
-                background: G, opacity: 0.6,
+                background: "var(--c-accent)", opacity: 0.6,
               }}
             />
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: G, display: "inline-flex", flexShrink: 0 }} />
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--c-accent)", display: "inline-flex", flexShrink: 0 }} />
           </span>
-          Available · Open to Full-Time &amp; Contract Roles
+          Available &middot; Open to Full-Time &amp; Contract Roles
         </span>
       </div>
 
       {/* "HI," */}
       <div style={{
         fontFamily: JET, fontSize: "13px", letterSpacing: "0.42em",
-        color: G, marginBottom: "10px", textTransform: "uppercase",
+        color: "var(--c-accent)", marginBottom: "10px", textTransform: "uppercase",
       }}>
         Hi,
       </div>
@@ -61,43 +59,43 @@ const LeftBanner = () => {
       <h1 style={{
         margin: 0, fontFamily: DISPLAY, fontWeight: 700,
         fontSize: "clamp(34px, 4.4vw, 60px)",
-        lineHeight: 1.0, letterSpacing: "-0.02em", color: "#f4f9f6",
+        lineHeight: 1.0, letterSpacing: "-0.02em", color: "var(--c-text-1)",
       }}>
         I'm Rohit Raut
         <span style={{
           display: "block", marginTop: "6px",
           fontSize: "clamp(22px, 2.8vw, 40px)",
-          fontWeight: 600, color: "#f4f9f6",
+          fontWeight: 600, color: "var(--c-text-1)",
         }}>
-          a <span style={{ color: G }}>{text}</span>
-          <Cursor cursorBlinking cursorStyle="|" cursorColor={G} />
+          a <span style={{ color: "var(--c-accent)" }}>{text}</span>
+          <Cursor cursorBlinking cursorStyle="|" cursorColor="var(--c-accent)" />
         </span>
       </h1>
 
       {/* Body */}
       <p style={{
         margin: "14px 0 0", maxWidth: "480px",
-        fontSize: "15px", lineHeight: 1.6, color: "#92a59b",
+        fontSize: "15px", lineHeight: 1.6, color: "var(--c-text-3)",
         fontFamily: "system-ui, -apple-system, sans-serif",
       }}>
-        Full Stack Engineer with 1.5 years across mobile and backend. Built a
-        sports tech platform for athlete monitoring — live on both stores —
-        using React Native and Django. Own features from database schema to
-        production release.
+        Full stack engineer, 1.5 years shipping mobile and backend. Built a
+        sports tech platform for athlete monitoring that's live on both stores,
+        using React Native and Django. I own features from database schema
+        to production release.
       </p>
 
       {/* Ships on pills */}
       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "12px", flexWrap: "wrap" }}>
-        <span style={{ fontFamily: JET, fontSize: "12px", letterSpacing: "0.08em", color: "#6f8278" }}>
+        <span style={{ fontFamily: JET, fontSize: "12px", letterSpacing: "0.08em", color: "var(--c-text-4)" }}>
           Ships on
         </span>
         {["iOS", "Android"].map(label => (
           <span key={label} style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
-            padding: "5px 12px", border: `1px solid ${G_BORDER}`,
-            borderRadius: "999px", fontFamily: JET, fontSize: "12px", color: "#cfe9da",
+            padding: "5px 12px", border: "1px solid var(--c-border-s)",
+            borderRadius: "999px", fontFamily: JET, fontSize: "12px", color: "var(--c-text-2)",
           }}>
-            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: G, flexShrink: 0 }} />
+            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--c-accent)", flexShrink: 0 }} />
             {label}
           </span>
         ))}
@@ -110,13 +108,13 @@ const LeftBanner = () => {
             style={{
               border: "none", cursor: "pointer", fontFamily: DISPLAY,
               padding: "11px 26px", borderRadius: "10px",
-              background: G, color: "#04130b",
+              background: "var(--c-accent)", color: "#ffffff",
               fontWeight: 600, fontSize: "14px",
-              boxShadow: "0 6px 24px rgba(61,220,132,0.28)",
+              boxShadow: "0 6px 24px var(--c-border-s)",
               transition: "transform .18s ease, box-shadow .18s ease",
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(61,220,132,0.42)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(61,220,132,0.28)"; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px var(--c-border-s)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px var(--c-border-s)"; }}
           >
             Hire Me
           </button>
@@ -127,14 +125,14 @@ const LeftBanner = () => {
             style={{
               cursor: "pointer", fontFamily: DISPLAY,
               padding: "10px 22px", borderRadius: "10px",
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(180,210,195,0.22)",
-              color: "#d7e7df", fontWeight: 600, fontSize: "14px",
+              background: "var(--c-bg-card-2)",
+              border: "1px solid var(--c-border-s)",
+              color: "var(--c-text-2)", fontWeight: 600, fontSize: "14px",
               display: "inline-flex", alignItems: "center", gap: "8px",
               transition: "border-color .18s ease, background .18s ease",
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(61,220,132,0.5)"; e.currentTarget.style.background = "rgba(61,220,132,0.06)"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(180,210,195,0.22)"; e.currentTarget.style.background = "rgba(255,255,255,0.02)"; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--c-accent)"; e.currentTarget.style.background = "var(--c-border)"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--c-border-s)"; e.currentTarget.style.background = "var(--c-bg-card-2)"; }}
           >
             <FaDownload style={{ fontSize: "12px", opacity: 0.7 }} />
             Download CV
@@ -145,18 +143,18 @@ const LeftBanner = () => {
       {/* Stats row */}
       <div style={{
         display: "flex", alignItems: "center", gap: "14px", marginTop: "10px",
-        fontFamily: JET, fontSize: "12px", color: "#6f8278", flexWrap: "wrap",
+        fontFamily: JET, fontSize: "12px", color: "var(--c-text-4)", flexWrap: "wrap",
       }}>
-        <span><span style={{ color: "#cfe9da" }}>2</span> stores</span>
+        <span><span style={{ color: "var(--c-text-2)" }}>2</span> stores</span>
         <span style={{ opacity: 0.35 }}>/</span>
-        <span><span style={{ color: "#cfe9da" }}>1</span> codebase</span>
+        <span><span style={{ color: "var(--c-text-2)" }}>1</span> codebase</span>
         <span style={{ opacity: 0.35 }}>/</span>
-        <span><span style={{ color: "#cfe9da" }}>1.5</span> yrs shipping</span>
+        <span><span style={{ color: "var(--c-text-2)" }}>1.5</span> yrs shipping</span>
       </div>
 
       {/* Social links */}
       <div style={{ marginTop: "12px" }}>
-        <div style={{ fontFamily: JET, fontSize: "10px", letterSpacing: "0.12em", color: "rgba(61,220,132,0.5)", marginBottom: "8px", textTransform: "uppercase" }}>
+        <div style={{ fontFamily: JET, fontSize: "10px", letterSpacing: "0.12em", color: "var(--c-border-s)", marginBottom: "8px", textTransform: "uppercase" }}>
           Find me in
         </div>
         <div style={{ display: "flex", gap: "10px" }}>

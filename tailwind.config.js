@@ -18,13 +18,13 @@ module.exports = {
         titleFont: ["Space Grotesk", "sans-serif"],
       },
       colors: {
-        bodyColor: "#04070a",
-        lightText: "#c4cfde",
-        boxBg: "linear-gradient(145deg, #0f140f, #131a13)",
-        designColor: "#3DDC84",
+        bodyColor: "var(--c-bg)",
+        lightText: "var(--c-text-2)",
+        boxBg: "var(--c-bg-card)",
+        designColor: "var(--c-accent)",
       },
       boxShadow: {
-        shadowOne: "10px 10px 19px #050a05, -10px -10px 19px #0f170f",
+        shadowOne: "10px 10px 19px var(--c-shadow), -10px -10px 19px var(--c-shadow-inv)",
         glowGreen: "0 0 20px rgba(61,220,132,0.25), 0 0 60px rgba(61,220,132,0.08)",
       },
     },

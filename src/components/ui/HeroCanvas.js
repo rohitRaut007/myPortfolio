@@ -284,7 +284,6 @@ const HeroCanvas = ({ onPlatformChange }) => {
     };
 
     /* ── Event listeners ────────────────────────── */
-    const wrap = canvas.parentElement || window;
     const onMove = (e) => {
       const r = (canvas.parentElement || document.documentElement).getBoundingClientRect();
       S.mouse.x = e.clientX - r.left;

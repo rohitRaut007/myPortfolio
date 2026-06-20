@@ -9,17 +9,17 @@ import Projects from "./components/projects/Projects";
 import Resume from "./components/resume/Resume";
 import Testimonial from "./components/tesimonial/Testimonial";
 import BackToTop from "./components/common/BackToTop";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
-function App() {
+const AppInner = () => {
+  const { theme } = useTheme();
   return (
-    <div className="w-full min-h-screen bg-bodyColor text-lightText">
-      {/* Navbar — full viewport width, handles own padding */}
+    <div
+      data-theme={theme}
+      className="w-full min-h-screen bg-bodyColor text-lightText"
+    >
       <Navbar />
-
-      {/* Hero — full viewport width, handles own inner max-width */}
       <Banner />
-
-      {/* All other sections — constrained + padded */}
       <main className="max-w-screen-xl mx-auto px-4 lgl:px-8">
         <Features />
         <Projects />
@@ -29,9 +29,16 @@ function App() {
         <Footer />
         <FooterBottom />
       </main>
-
       <BackToTop />
     </div>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppInner />
+    </ThemeProvider>
   );
 }
 

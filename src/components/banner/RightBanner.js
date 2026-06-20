@@ -121,35 +121,35 @@ const RightBanner = ({ platform = "ios" }) => {
         display: "flex", alignItems: "center", justifyContent: "center", gap: "12px",
         fontFamily: JET, fontSize: "11px", letterSpacing: "0.05em",
       }}>
-        <span style={{ color: "#6f8278" }}>▸ RENDERING</span>
+        <span style={{ color: "var(--c-text-4)" }}>▸ RENDERING</span>
         <span style={{ color: G, fontWeight: 600, minWidth: "104px", textAlign: "center" }}>
           {platformLabel}
         </span>
         <span style={{ width: "1px", height: "14px", background: "rgba(180,210,195,0.18)", display: "inline-block" }} />
-        <span style={{ color: "#6f8278" }}>ONE CODEBASE</span>
+        <span style={{ color: "var(--c-text-4)" }}>ONE CODEBASE</span>
       </div>
 
       {/* Glassmorphism code card */}
       <div style={{
-        border: "1px solid rgba(61,220,132,0.16)",
+        border: "1px solid var(--c-border-s)",
         borderRadius: "16px",
-        background: "linear-gradient(180deg, rgba(10,17,14,0.82), rgba(6,11,9,0.78))",
+        background: "var(--c-bg-card)",
         backdropFilter: "blur(6px)",
         WebkitBackdropFilter: "blur(6px)",
-        boxShadow: "0 24px 60px rgba(0,0,0,0.45)",
+        boxShadow: "0 24px 60px rgba(0,0,0,0.2)",
         overflow: "hidden",
       }}>
         {/* Top bar */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "13px 18px", borderBottom: "1px solid rgba(61,220,132,0.12)",
+          padding: "13px 18px", borderBottom: "1px solid var(--c-border)",
         }}>
           <div style={{ display: "flex", gap: "8px" }}>
             <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
             <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#febc2e", display: "inline-block" }} />
             <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#28c840", display: "inline-block" }} />
           </div>
-          <span style={{ fontFamily: JET, fontSize: "12.5px", color: "#8a9d93" }}>
+          <span style={{ fontFamily: JET, fontSize: "12.5px", color: "var(--c-text-3)" }}>
             {currentSnip.file}
           </span>
         </div>
@@ -188,8 +188,8 @@ const RightBanner = ({ platform = "ios" }) => {
         {/* Bottom bar */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "11px 18px", borderTop: "1px solid rgba(61,220,132,0.12)",
-          fontFamily: JET, fontSize: "12px", color: "#6f8278",
+          padding: "11px 18px", borderTop: "1px solid var(--c-border)",
+          fontFamily: JET, fontSize: "12px", color: "var(--c-text-4)",
         }}>
           <span>{currentSnip.lang}</span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: "7px", color: G }}>

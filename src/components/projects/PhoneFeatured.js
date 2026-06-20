@@ -24,9 +24,9 @@ const PhoneFeatured = () => {
       ref={containerRef}
       className="w-full mb-16 rounded-xl overflow-hidden"
       style={{
-        background: "linear-gradient(145deg, #0c140c, #0f160f)",
-        boxShadow: "10px 10px 19px #050a05, -10px -10px 19px #0f170f",
-        border: "1px solid rgba(61,220,132,0.12)",
+        background: "var(--c-bg-card)",
+        boxShadow: "none",
+        border: "1px solid var(--c-border)",
       }}
     >
       {/* Featured badge */}
@@ -34,12 +34,12 @@ const PhoneFeatured = () => {
         <span
           className="text-xs font-titleFont uppercase tracking-widest px-3 py-1 rounded-full"
           style={{
-            background: "rgba(61,220,132,0.1)",
-            color: "#3DDC84",
-            border: "1px solid rgba(61,220,132,0.3)",
+            background: "var(--c-border)",
+            color: "var(--c-accent)",
+            border: "1px solid var(--c-border-s)",
           }}
         >
-          Featured — Live on App Store &amp; Play Store
+          Live on App Store &amp; Play Store
         </span>
       </div>
 
@@ -49,24 +49,24 @@ const PhoneFeatured = () => {
         <div className="w-full lgl:w-1/2 p-6 lgl:p-10 flex flex-col justify-between gap-6">
           <div>
             <h3
-              className="text-3xl lgl:text-4xl font-bold font-titleFont text-white mb-2"
-              style={{ lineHeight: 1.2 }}
+              className="text-3xl lgl:text-4xl font-bold font-titleFont mb-2"
+              style={{ lineHeight: 1.2, color: "var(--c-text-1)" }}
             >
               Sports Tech Platform{" "}
-              <span style={{ color: "#3DDC84", fontSize: "0.75em" }}>
+              <span style={{ color: "var(--c-accent)", fontSize: "0.75em" }}>
                 for Athlete Monitoring &amp; Performance
               </span>
             </h3>
-            <p className="text-sm font-bodyFont" style={{ color: "#9ca3af" }}>
+            <p className="text-sm font-bodyFont" style={{ color: "var(--c-text-3)" }}>
               React Native · Django · AWS · Docker · OpenAI API
             </p>
           </div>
 
-          <p className="text-sm font-bodyFont leading-7" style={{ color: "#c4cfde" }}>
-            Built end-to-end from scratch — a cross-platform sports tech
-            platform for athlete performance tracking and monitoring, shipped to
-            both app stores. Owned everything: schema design, API, mobile client,
-            CI/CD pipeline, and cloud infrastructure.
+          <p className="text-sm font-bodyFont leading-7" style={{ color: "var(--c-text-2)" }}>
+            Built a cross-platform sports tech platform for athlete performance
+            tracking from the ground up and shipped it to both stores. Handled
+            everything: schema design, the API, mobile client, CI/CD pipeline,
+            and cloud infra.
           </p>
 
           {/* Metrics */}
@@ -81,18 +81,18 @@ const PhoneFeatured = () => {
                 key={label}
                 className="rounded-lg p-3"
                 style={{
-                  background: "rgba(61,220,132,0.05)",
-                  border: "1px solid rgba(61,220,132,0.15)",
+                  background: "var(--c-bg-card-2)",
+                  border: "1px solid var(--c-border)",
                 }}
               >
                 <p
                   className="text-xl font-bold font-titleFont"
-                  style={{ color: "#3DDC84" }}
+                  style={{ color: "var(--c-accent)" }}
                 >
                   {stat}
                 </p>
-                <p className="text-xs font-medium text-white mt-0.5">{label}</p>
-                <p className="text-xs mt-0.5" style={{ color: "#6b7280" }}>
+                <p className="text-xs font-medium mt-0.5" style={{ color: "var(--c-text-1)" }}>{label}</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--c-text-4)" }}>
                   {sub}
                 </p>
               </div>
@@ -102,17 +102,17 @@ const PhoneFeatured = () => {
           {/* Tech bullets */}
           <ul className="flex flex-col gap-2">
             {[
-              "Django REST Framework + Celery task queues — async notifications and batch report generation decoupled from the request cycle, keeping API p95 under 200 ms",
+              "Django REST Framework with Celery for async work: notifications and batch report generation run off the request cycle, keeping API p95 under 200ms",
               "Full offline-first data layer via SQLite + Hive: athlete records available in zero-connectivity environments, synced to the server on reconnect",
               "GitHub Actions CI/CD pipeline: lint → unit test → build → zero-downtime deploy to EC2, blocking any PR that breaks the test suite",
-              "Pytest covering all Django service and API layers; Jest + React Native Testing Library for mobile — both gates enforced in CI before any merge",
+              "Pytest covering all Django service and API layers; Jest + React Native Testing Library for mobile. Both gates run in CI and block merges on failure",
             ].map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-2 text-sm font-bodyFont"
-                style={{ color: "#c4cfde" }}
+                style={{ color: "var(--c-text-2)" }}
               >
-                <span style={{ color: "#3DDC84", marginTop: "2px", flexShrink: 0 }}>
+                <span style={{ color: "var(--c-accent)", marginTop: "2px", flexShrink: 0 }}>
                   ▸
                 </span>
                 {item}
@@ -128,17 +128,17 @@ const PhoneFeatured = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium font-bodyFont transition-all duration-300"
               style={{
-                background: "#0c140c",
-                color: "#ffffff",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "var(--c-bg-card)",
+                color: "var(--c-text-1)",
+                border: "1px solid var(--c-border-s)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#3DDC84";
-                e.currentTarget.style.color = "#3DDC84";
+                e.currentTarget.style.borderColor = "var(--c-accent)";
+                e.currentTarget.style.color = "var(--c-accent)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "var(--c-border-s)";
+                e.currentTarget.style.color = "var(--c-text-1)";
               }}
             >
               🍎 App Store
@@ -149,17 +149,17 @@ const PhoneFeatured = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium font-bodyFont transition-all duration-300"
               style={{
-                background: "#0c140c",
-                color: "#ffffff",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "var(--c-bg-card)",
+                color: "var(--c-text-1)",
+                border: "1px solid var(--c-border-s)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#3DDC84";
-                e.currentTarget.style.color = "#3DDC84";
+                e.currentTarget.style.borderColor = "var(--c-accent)";
+                e.currentTarget.style.color = "var(--c-accent)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "var(--c-border-s)";
+                e.currentTarget.style.color = "var(--c-text-1)";
               }}
             >
               ▶ Play Store

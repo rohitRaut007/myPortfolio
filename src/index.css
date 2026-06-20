@@ -3,26 +3,123 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme CSS variables ─────────────────────────────────────────────── */
+:root {
+  --c-bg:           #04070a;
+  --c-bg-card:      #0c140c;
+  --c-bg-card-2:    #0f160f;
+  --c-bg-input:     #191b1e;
+  --c-text-1:       #ffffff;
+  --c-text-2:       #c4cfde;
+  --c-text-3:       #92a59b;
+  --c-text-4:       #6b7280;
+  --c-accent:       #3DDC84;
+  --c-border:       rgba(61,220,132,0.12);
+  --c-border-s:     rgba(61,220,132,0.30);
+  --c-shadow:       #050a05;
+  --c-shadow-inv:   #0f170f;
+  --c-overlay:      rgba(2,5,7,0.55);
+  --c-scanline:     rgba(255,255,255,0.013);
+}
+
+[data-theme="light"] {
+  --c-bg:           #f9fafb;
+  --c-bg-card:      #ffffff;
+  --c-bg-card-2:    #f0f4f1;
+  --c-bg-input:     #f3f4f6;
+  --c-text-1:       #0d1117;
+  --c-text-2:       #1f2937;
+  --c-text-3:       #374151;
+  --c-text-4:       #6b7280;
+  --c-accent:       #16a34a;
+  --c-border:       rgba(22,163,74,0.18);
+  --c-border-s:     rgba(22,163,74,0.45);
+  --c-shadow:       #e5e7eb;
+  --c-shadow-inv:   #ffffff;
+  --c-overlay:      rgba(249,250,251,0.50);
+  --c-scanline:     rgba(0,0,0,0.018);
+}
+
+/* Light theme: stronger heading weight for readability */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  font-weight: 700;
+}
+
 @layer components{
     .bannerIcon{
-        @apply w-10 h-10 aspect-square flex-shrink-0 bg-black bg-opacity-25 text-gray-200 text-base inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300;
+        @apply w-10 h-10 aspect-square flex-shrink-0 text-base inline-flex items-center justify-center rounded-md hover:-translate-y-1 transition-all cursor-pointer duration-300;
+        background: rgba(0,0,0,0.15);
+        color: var(--c-text-2);
+        box-shadow: none;
+    }
+    .bannerIcon:hover {
+        color: var(--c-accent);
+        background: rgba(0,0,0,0.22);
+    }
+    /* Light mode icon overrides */
+    [data-theme="light"] .bannerIcon {
+        background: var(--c-bg-card-2);
+        border: 1px solid var(--c-border-s);
+        color: var(--c-text-3);
+        box-shadow: none;
+    }
+    [data-theme="light"] .bannerIcon:hover {
+        background: var(--c-border);
+        color: var(--c-accent);
     }
     .resumeLi {
-    @apply w-full h-20 bg-black bg-opacity-25 text-xl text-gray-300 flex justify-center cursor-pointer hover:bg-opacity-40 duration-300 items-center border-[1px] rounded-none;
-         }
-.bgOpacity {
-@apply bg-black bg-opacity-40;
-                  }
-    .contactInput{
-        @apply w-full h-12 rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText px-4 active:outline-none focus-visible:outline-designColor outline-none focus-visible:border-b-transparent duration-300
+        @apply w-full h-20 text-xl flex justify-center cursor-pointer duration-300 items-center border-[1px] rounded-none;
+        background: rgba(0,0,0,0.12);
+        color: var(--c-text-3);
     }
-.contactTextArea{
-    @apply w-full rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText px-4 py-2 active:outline-none focus-visible:outline-designColor outline-none focus-visible:border-b-transparent duration-300 resize-none
+    .resumeLi:hover { background: rgba(0,0,0,0.2); }
+    [data-theme="light"] .resumeLi {
+        background: var(--c-bg-card-2);
+        color: var(--c-text-2);
+        font-weight: 600;
+    }
+    [data-theme="light"] .resumeLi:hover {
+        background: var(--c-border);
+        color: var(--c-accent);
+    }
+    .bgOpacity { background: rgba(0,0,0,0.3); }
+    [data-theme="light"] .bgOpacity { background: var(--c-bg-card-2); }
+    .contactInput{
+        @apply w-full h-12 rounded-lg border-b-[1px] px-4 active:outline-none outline-none duration-300;
+        border-bottom-color: var(--c-text-4);
+        background: var(--c-bg-input);
+        color: var(--c-text-2);
+    }
+    .contactInput:focus-visible {
+        outline-color: var(--c-accent);
+        border-bottom-color: transparent;
+    }
+    .contactTextArea{
+        @apply w-full rounded-lg border-b-[1px] px-4 py-2 active:outline-none outline-none duration-300 resize-none;
+        border-bottom-color: var(--c-text-4);
+        background: var(--c-bg-input);
+        color: var(--c-text-2);
+    }
+    .contactTextArea:focus-visible {
+        outline-color: var(--c-accent);
+        border-bottom-color: transparent;
+    }
 }
+
+/* Section dividers — swap black to theme border in light mode */
+[data-theme="light"] .border-b-black {
+    border-bottom-color: var(--c-border) !important;
+}
+[data-theme="light"] section,
+[data-theme="light"] main > div {
+    border-color: var(--c-border);
 }
 
 .active {
-    color: white;
+    color: var(--c-accent);
 }
 .scrollbar-hide::-webkit-scrollbar{
     display: none;
@@ -38,4 +135,3 @@
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
-

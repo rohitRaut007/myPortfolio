@@ -66,7 +66,7 @@ const Contact = () => {
   };
 
   const inputBase =
-    "w-full h-12 rounded-lg border-b-[1px] border-b-gray-700 bg-[#060b08] text-lightText px-4 outline-none focus-visible:outline-none focus-visible:border-b-designColor duration-300 transition-colors";
+    "contactInput";
 
   return (
     <section id="contact" className="w-full py-20 border-b-[1px] border-b-black">
@@ -76,7 +76,7 @@ const Contact = () => {
       <div className="w-full">
         <div className="w-full h-auto flex flex-col lgl:flex-row justify-between gap-6">
           <ContactLeft />
-          <div className="w-full lgl:w-[60%] h-full py-10 flex flex-col gap-8 p-4 lgl:p-8 rounded-lg" style={{ background: "linear-gradient(145deg, #080e0b, #090f0c)", border: "1px solid rgba(61,220,132,0.1)", boxShadow: "10px 10px 19px #020507, -10px -10px 19px #060b0e" }}>
+          <div className="w-full lgl:w-[60%] h-full py-10 flex flex-col gap-8 p-4 lgl:p-8 rounded-lg" style={{ background: "var(--c-bg-card)", border: "1px solid var(--c-border)" }}>
             <form ref={formRef} className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
               {/* Status messages */}
               {errMsg && (
@@ -94,7 +94,7 @@ const Contact = () => {
 
               <div className="w-full flex flex-col lgl:flex-row gap-6">
                 <div className="w-full lgl:w-1/2 flex flex-col gap-2">
-                  <label className="text-xs text-gray-400 uppercase tracking-widest font-titleFont">
+                  <label className="text-xs uppercase tracking-widest font-titleFont font-semibold" style={{ color: "var(--c-text-4)" }}>
                     Your Name *
                   </label>
                   <input
@@ -106,7 +106,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="w-full lgl:w-1/2 flex flex-col gap-2">
-                  <label className="text-xs text-gray-400 uppercase tracking-widest font-titleFont">
+                  <label className="text-xs uppercase tracking-widest font-titleFont font-semibold" style={{ color: "var(--c-text-4)" }}>
                     Phone Number *
                   </label>
                   <input
@@ -120,7 +120,7 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest font-titleFont">
+                <label className="text-xs uppercase tracking-widest font-titleFont font-semibold" style={{ color: "var(--c-text-4)" }}>
                   Email Address *
                 </label>
                 <input
@@ -133,7 +133,7 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest font-titleFont">
+                <label className="text-xs uppercase tracking-widest font-titleFont font-semibold" style={{ color: "var(--c-text-4)" }}>
                   Subject *
                 </label>
                 <input
@@ -146,13 +146,13 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest font-titleFont">
+                <label className="text-xs uppercase tracking-widest font-titleFont font-semibold" style={{ color: "var(--c-text-4)" }}>
                   Message *
                 </label>
                 <textarea
                   onChange={(e) => { setMessage(e.target.value); setErrMsg(""); }}
                   value={message}
-                  className={`w-full rounded-lg border-b-[1px] border-b-gray-700 bg-[#060b08] text-lightText px-4 py-3 outline-none focus-visible:outline-none focus-visible:border-b-designColor duration-300 transition-colors resize-none ${errMsg === "Message is required." ? "border-b-red-500" : ""}`}
+                  className={`contactTextArea ${errMsg === "Message is required." ? "border-b-red-500" : ""}`}
                   cols="30"
                   rows="8"
                   placeholder="Tell me about your project, opportunity, or question..."
@@ -164,22 +164,20 @@ const Contact = () => {
                 disabled={isSending}
                 className="w-full h-12 rounded-lg text-sm font-medium font-bodyFont tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
-                  background: isSending
-                    ? "rgba(61,220,132,0.08)"
-                    : "rgba(61,220,132,0.1)",
-                  color: "#3DDC84",
-                  border: "1px solid rgba(61,220,132,0.3)",
+                  background: "var(--c-border)",
+                  color: "var(--c-accent)",
+                  border: "1px solid var(--c-border-s)",
                 }}
                 onMouseEnter={(e) => {
                   if (!isSending) {
-                    e.currentTarget.style.background = "rgba(61,220,132,0.2)";
-                    e.currentTarget.style.borderColor = "#3DDC84";
-                    e.currentTarget.style.color = "#3DDC84";
+                    e.currentTarget.style.background = "var(--c-border-s)";
+                    e.currentTarget.style.borderColor = "var(--c-accent)";
+                    e.currentTarget.style.color = "var(--c-accent)";
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(61,220,132,0.1)";
-                  e.currentTarget.style.borderColor = "rgba(61,220,132,0.3)";
+                  e.currentTarget.style.background = "var(--c-border)";
+                  e.currentTarget.style.borderColor = "var(--c-border-s)";
                 }}
               >
                 {isSending ? (
