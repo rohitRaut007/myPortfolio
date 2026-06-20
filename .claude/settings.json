@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -sL \"https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/android.svg\" -o /tmp/android-raw.svg)",
+      "Read(//tmp/**)",
+      "Bash(sed 's/fill=\"currentColor\"/fill=\"#3DDC84\"/g')",
+      "Bash(cp /tmp/android-logo.svg \"e:/myPortfolio/src/assets/images/android-logo.svg\")",
+      "Bash(curl -sL \"https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apple.svg\" -o /tmp/apple-raw.svg)",
+      "Bash(sed 's/fill=\"currentColor\"/fill=\"#ffffff\"/g')",
+      "Bash(cp /tmp/apple-logo.svg \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
+      "Bash(sed 's/<svg role=\"img\" viewBox=\"0 0 24 24\"/<svg role=\"img\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"/' \"e:/myPortfolio/src/assets/images/android-logo.svg\")",
+      "Bash(cp /tmp/android-fixed.svg \"e:/myPortfolio/src/assets/images/android-logo.svg\")",
+      "Bash(sed 's/<svg role=\"img\" viewBox=\"0 0 24 24\"/<svg role=\"img\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"/' \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
+      "Bash(cp /tmp/apple-fixed.svg \"e:/myPortfolio/src/assets/images/apple-logo.svg\")"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import Title from '../layouts/Title'
 import ProjectsCard from './ProjectsCard'
+import PhoneFeatured from './PhoneFeatured'
 
 const Projects = () => {
   return (
@@ -10,52 +11,41 @@ const Projects = () => {
     >
       <div className="flex justify-center items-center text-center">
         <Title
-          title="VISIT MY PORTFOLIO AND KEEP YOUR FEEDBACK"
+          title="Selected Work"
           des="My Projects"
         />
       </div>
+
+      {/* Featured: Sports Tech Platform — 3D phone case study */}
+      <PhoneFeatured />
+
+      {/* Remaining projects grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
-        
+
         {/* React Native Meditation App */}
         <ProjectsCard
-          title="React Native Meditation App (Numa)"
-          des="Developed a guided meditation app with 95% crash-free sessions. Implemented advanced animations using Reanimated 2 + Skia, improving render time by 40%. Designed responsive UI serving both iOS and Android."
+          title="Meditation App"
+          des="Cross-platform meditation app with breathing exercises, session timers, and a daily streak system. Fully offline — all data stored locally with SQLite and Hive, no server dependency. Spent significant time on the animation layer using Reanimated and Skia to get fluid 60fps transitions on mid-range Android devices."
           video="/videos/numa_mockup.mp4"
-          link="https://github.com/rohitRaut007" // replace with actual repo if available
+          link="https://github.com/rohitRaut007"
         />
 
-        {/* MERN Stack Real-Time Chat Application */}
+        {/* Real-Time Chat App */}
         <ProjectsCard
-          title="MERN Stack Real-Time Chat App"
-          des="Built a real-time messaging platform with React.js, Node.js, Express, and MongoDB. Implemented Socket.IO for instant messaging and status tracking. Fully responsive with Tailwind CSS."
+          title="Real-Time Chat App"
+          des="Full-stack chat application with real-time messaging via WebSockets. Built with Node.js, Express, Socket.IO, and MongoDB. Features presence tracking, typing indicators, and paginated chat history. Frontend in React.js with state management tuned for high-frequency updates."
           video="/videos/mern_demo.mp4"
           link="https://realtime-chat-application-ebjb.onrender.com/"
         />
 
-        {/* Enterprise POS System */}
+        {/* News App */}
         <ProjectsCard
-          title="Enterprise POS System (Flutter + Hive)"
-          des="Production-ready POS solution with Flutter 3.16 and Hive for offline DB. Achieved 99.9% inventory data accuracy and managed ₹50,000+ monthly transactions. Features include real-time stock management and invoice printing."
-          video="/videos/entc_demo.mp4"
-          link="https://github.com/rohitRaut007" // replace with actual repo if available
-        />
-
-        {/* The News App */}
-        <ProjectsCard
-          title="The News App (Kotlin + MVVM)"
-          des="Modern news reader app with latest headlines, live updates via REST APIs, bookmarking, and personalized reading history. Built with MVVM architecture, Room DB, and Material UI design."
+          title="News App — Kotlin + MVVM"
+          des="Android news reader built in Kotlin with a clean MVVM pattern: ViewModel, LiveData, and a Repository layer. News data via Retrofit REST API, articles bookmarked locally with Room DB. Followed standard Android architecture guidelines with Material Design UI."
           video="/videos/news_demo.mp4"
           link="https://github.com/rohitRaut007/NewsApp"
         />
 
-        {/* Portfolio Website with GSAP */}
-        <ProjectsCard
-          title="Interactive Landing Website"
-          des="A modern Shampagne website built with React.js and Tailwind CSS, enhanced with GSAP animations for smooth scrolling, transitions, and interactive elements. Optimized for performance and responsive across all devices."
-          video="/videos/gsap_demo.mp4"
-          link="https://rohitraut.vercel.app/"
-        />
-        
       </div>
     </section>
   )

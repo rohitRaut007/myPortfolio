@@ -11,43 +11,19 @@ const Achievement = () => {
     >
       <div>
         <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-designColor tracking-[4px]">2007 - 2010</p>
-          <h2 className="text-3xl md:text-4xl font-bold">Accomplishment</h2>
+          <p className="text-sm text-designColor tracking-[4px]">2023 - 2024</p>
+          <h2 className="text-3xl md:text-4xl font-bold">Leadership</h2>
         </div>
-        <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
+        <div className="mt-6 lgl:mt-14 w-full pb-10 flex flex-col gap-10" style={{ borderLeft: "6px solid rgba(61,220,132,0.15)" }}>
           <ResumeCard
-            title="Core Member"
-            subTitle="Google Developer Student Clubs (GDSC)."
-            result="Success"
-            des="As a dedicated core member of GDSC, actively participated in various tech-related initiatives, collaborated
-with fellow members, and contributed to the success of the club. "
-          />
-          <ResumeCard
-            title="Android Development Domain Lead"
-            subTitle="Google Developer Student Clubs (GDSC)"
-            result="Success"
-            des="Demonstrated leadership as the Android Development Domain Lead at GDSC, overseeing and coordinating
-projects within the domain"
-          />
-          <ResumeCard
-            title="1-week cyber security student development program."
-            subTitle="CyberSanskar."
-            result="Success"
-            des="Contributed as a volunteer in a comprehensive cybersecurity program by Cybersanskar in collaboration with
-GDSC held at Deogiri Institute of Engineering and Management Studies Gaining valuable insights into the
-latest trends in cybersecurity."
+            title="Android Lead"
+            subTitle="Google Developer Student Clubs (GDSC) — DIEMS (2023 – 2024)"
+            result="Lead"
+            des="Ran the Android track for the full academic year, helping 100+ students get started with mobile development. Organised hands-on sessions covering Jetpack Compose, Kotlin, and Firebase integration. Managed the domain roadmap and mentored members throughout."
           />
         </div>
       </div>
-      <div>
-        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-designColor tracking-[4px]"></p>
-          <h2 className="text-3xl md:text-4xl font-bold"> </h2>
-        </div>
-        <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
-          
-        </div>
-      </div>
+      <div></div>
     </motion.div>
   );
 };

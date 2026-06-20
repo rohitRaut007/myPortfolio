@@ -1,258 +1,326 @@
-import React,{useState} from 'react'
-import Slider from "react-slick";
-import { RiStarFill } from "react-icons/ri";
-import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
-import Title from '../layouts/Title'
-import { testimonialOne,testimonialTwo, quote } from "../../assets";
+import React, { useState } from "react";
+import Title from "../layouts/Title";
 
+const JET = "'JetBrains Mono', 'Roboto Mono', monospace";
+const G = "#3DDC84";
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="w-14 h-12 bg-[#0c1821] hover:bg-black duration-300 rounded-md text-2xl text-gray-400 flex justify-center items-center absolute top-0 right-0 shadow-shadowOne cursor-pointer z-10"
-      onClick={onClick}
-    >
-      <HiArrowRight />
-    </div>
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="w-14 h-12 bg-[#0c1821] hover:bg-black duration-300 rounded-md text-2xl text-gray-400 flex justify-center items-center absolute top-0 right-20 shadow-shadowOne cursor-pointer z-10"
-      onClick={onClick}
-    >
-      <HiArrowLeft />
-    </div>
-  );
-}
+const HIGHLIGHTS = [
+  "Full-stack frontend & backend development",
+  "API integrations & database management",
+  "Adapted quickly in a fast-paced environment",
+  "Quality work delivered within every deadline",
+];
 
 const Testimonial = () => {
-      const [dotActive, setDocActive] = useState(0);
-     const settings = {
-       dots: true,
-       infinite: true,
-       speed: 500,
-       slidesToShow: 1,
-       slidesToScroll: 1,
-       nextArrow:<SampleNextArrow />,
-       prevArrow:<SamplePrevArrow />,
-       beforeChange: (prev, next) => {
-         setDocActive(next);
-       },
-       appendDots: (dots) => (
-         <div
-           style={{
-             borderRadius: "10px",
-             padding: "10px",
-           }}
-         >
-           <ul
-             style={{
-               display: "flex",
-               gap: "15px",
-               justifyContent: "center",
-               marginTop: "20px",
-             }}
-           >
-             {" "}
-             {dots}{" "}
-           </ul>
-         </div>
-       ),
-       customPaging: (i) => (
-         <div
-           style={
-             i === dotActive
-               ? {
-                   width: "12px",
-                   height: "12px",
-                   color: "blue",
-                   background: "#ff014f",
-                   borderRadius: "50%",
-                   cursor: "pointer",
-                 }
-               : {
-                   width: "12px",
-                   height: "12px",
-                   color: "blue",
-                   background: "gray",
-                   borderRadius: "50%",
-                   cursor: "pointer",
-                 }
-           }
-         ></div>
-       ),
-     };
+  const [hovered, setHovered] = useState(false);
+
   return (
     <section
-      id="testimonial"
+      id="recognition"
       className="w-full py-20 border-b-[1px] border-b-black"
     >
       <div className="flex justify-center items-center text-center">
-        <Title title="WHAT CLIENTS SAY" des="Testimonial" />
+        <Title title="Verified by Industry" des="Recognition" />
       </div>
-      <div className="max-w-6xl mx-auto">
-        {/* ================ Slider One ================== */}
-        <Slider {...settings}>
-          <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialOne}
-                  alt="testimonialOne"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
-                </div>
-              </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* ================ Slider Two ================== */}
 
-          <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialTwo}
-                  alt="testimonialTwo"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
-                </div>
-              </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* ================ Slider Three ================== */}
+      {/* Main card */}
+      <div
+        className="max-w-6xl mx-auto rounded-2xl overflow-hidden"
+        style={{
+          background: "linear-gradient(145deg,#0c140c,#0f160f)",
+          border: "1px solid rgba(61,220,132,0.15)",
+          boxShadow: "0 0 60px rgba(61,220,132,0.05)",
+        }}
+      >
+        <div className="flex flex-col lgl:flex-row">
 
-          <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialOne}
-                  alt="testimonialOne"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
+          {/* ── LEFT: LOR content ── */}
+          <div className="w-full lgl:w-[55%] p-8 lgl:p-12 flex flex-col gap-7">
+
+            {/* Company header */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
+                {/* Apex Labs wordmark */}
+                <div
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "8px",
+                    padding: "6px 14px", borderRadius: "8px",
+                    background: "rgba(61,220,132,0.08)",
+                    border: "1px solid rgba(61,220,132,0.25)",
+                  }}
+                >
+                  <span style={{ fontSize: "18px" }}>🚀</span>
+                  <span
+                    style={{
+                      fontFamily: JET, fontWeight: 700, fontSize: "14px",
+                      color: G, letterSpacing: "0.12em",
+                    }}
+                  >
+                    APEX LABS
+                  </span>
                 </div>
+
+                {/* Verified badge */}
+                <span
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "5px",
+                    padding: "4px 10px", borderRadius: "999px",
+                    background: "rgba(61,220,132,0.06)",
+                    border: "1px solid rgba(61,220,132,0.2)",
+                    fontFamily: JET, fontSize: "10px", color: G,
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  <span style={{ fontSize: "10px" }}>✓</span>
+                  Verified · US Company
+                </span>
               </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
+
+              {/* Location + date */}
+              <div
+                style={{
+                  fontFamily: JET, fontSize: "11px",
+                  color: "rgba(61,220,132,0.5)", letterSpacing: "0.06em",
+                }}
+              >
+                📍 Key Biscayne, Florida, USA &nbsp;·&nbsp; Letter of Recommendation &nbsp;·&nbsp; 9 May 2026
               </div>
             </div>
+
+            {/* Pull quote */}
+            <blockquote style={{ margin: 0 }}>
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "clamp(18px, 2vw, 22px)",
+                  fontWeight: 600, color: "#f0f6fc",
+                  lineHeight: 1.55, letterSpacing: "-0.01em",
+                }}
+              >
+                "I am confident that he will continue to perform exceptionally
+                well in his future endeavors and will be{" "}
+                <span style={{ color: G }}>
+                  a valuable asset to any organization.
+                </span>
+                "
+              </p>
+            </blockquote>
+
+            {/* Highlight chips */}
+            <div className="flex flex-col gap-2">
+              {HIGHLIGHTS.map((text, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex", alignItems: "center", gap: "10px",
+                    padding: "8px 12px", borderRadius: "8px",
+                    background: "rgba(61,220,132,0.04)",
+                    border: "1px solid rgba(61,220,132,0.1)",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "16px", height: "16px", borderRadius: "50%",
+                      background: "rgba(61,220,132,0.15)",
+                      border: "1px solid rgba(61,220,132,0.4)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0, fontSize: "9px", color: G,
+                    }}
+                  >
+                    ✓
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: JET, fontSize: "12px",
+                      color: "#c4cfde", letterSpacing: "0.02em",
+                    }}
+                  >
+                    {text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Signatory */}
+            <div
+              style={{
+                paddingTop: "16px",
+                borderTop: "1px solid rgba(61,220,132,0.1)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: JET, fontSize: "12px",
+                  color: "#8b949e", letterSpacing: "0.04em",
+                }}
+              >
+                — Utkarsh &nbsp;·&nbsp; Chief Operating Officer &nbsp;·&nbsp; Apex Labs
+              </p>
+              <a
+                href="https://apexbytetech.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: JET, fontSize: "10px",
+                  color: "rgba(61,220,132,0.4)", letterSpacing: "0.06em",
+                  textDecoration: "none", marginTop: "4px", display: "block",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = G)}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(61,220,132,0.4)")}
+              >
+                apexbytetech.io ↗
+              </a>
+            </div>
           </div>
-        </Slider>
+
+          {/* ── RIGHT: Document preview + CTA ── */}
+          <div
+            className="w-full lgl:w-[45%] p-8 lgl:p-12 flex flex-col items-center justify-center gap-6"
+            style={{ borderLeft: "1px solid rgba(61,220,132,0.08)" }}
+          >
+            {/* Document card */}
+            <div
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              style={{
+                width: "100%", maxWidth: "340px",
+                background: "#f8f9fa",
+                borderRadius: "12px",
+                padding: "24px 28px",
+                boxShadow: hovered
+                  ? "0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(61,220,132,0.4)"
+                  : "0 12px 40px rgba(0,0,0,0.4)",
+                transform: hovered ? "translateY(-4px)" : "none",
+                transition: "all 0.3s ease",
+                cursor: "default",
+              }}
+            >
+              {/* Letterhead */}
+              <div
+                style={{
+                  display: "flex", alignItems: "center", gap: "8px",
+                  marginBottom: "16px", paddingBottom: "12px",
+                  borderBottom: "1.5px solid #dee2e6",
+                }}
+              >
+                <div
+                  style={{
+                    width: "28px", height: "28px", borderRadius: "6px",
+                    background: "#0c140c", display: "flex",
+                    alignItems: "center", justifyContent: "center",
+                    fontSize: "14px",
+                  }}
+                >
+                  🚀
+                </div>
+                <div>
+                  <div style={{ fontSize: "10px", fontWeight: 700, color: "#212529", letterSpacing: "0.08em" }}>
+                    APEX LABS
+                  </div>
+                  <div style={{ fontSize: "8px", color: "#868e96" }}>apexbytetech.io</div>
+                </div>
+              </div>
+
+              {/* Doc title */}
+              <p style={{ fontSize: "13px", fontWeight: 700, color: "#212529", marginBottom: "8px" }}>
+                Letter of Recommendation
+              </p>
+              <p style={{ fontSize: "9px", color: "#868e96", marginBottom: "12px" }}>
+                9 May 2026 &nbsp;·&nbsp; Rohit Raut
+              </p>
+
+              {/* Excerpt lines */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px", marginBottom: "12px" }}>
+                <p style={{ fontSize: "9px", color: "#495057", lineHeight: 1.6 }}>
+                  <em>
+                    "I am pleased to recommend Mr. Rohit Raut for future
+                    professional opportunities. During his time at Apex Labs,
+                    Rohit worked as a valuable member of our Engineering Team..."
+                  </em>
+                </p>
+              </div>
+
+              {/* Redacted lines (decorative) */}
+              {[100, 92, 96, 85, 100, 78].map((w, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: "6px", borderRadius: "3px",
+                    background: i < 3 ? "#dee2e6" : "#e9ecef",
+                    width: `${w}%`, marginBottom: "5px",
+                  }}
+                />
+              ))}
+
+              {/* Signature area */}
+              <div style={{ marginTop: "14px", paddingTop: "10px", borderTop: "1px solid #dee2e6" }}>
+                <div style={{ fontSize: "8px", color: "#868e96", marginBottom: "4px" }}>Sincerely,</div>
+                <div
+                  style={{
+                    fontSize: "16px", fontFamily: "Georgia, serif",
+                    color: "#343a40", letterSpacing: "0.05em",
+                    marginBottom: "2px", fontStyle: "italic",
+                  }}
+                >
+                  Utkarsh
+                </div>
+                <div style={{ fontSize: "8px", color: "#868e96" }}>Chief Operating Officer · Apex Labs</div>
+              </div>
+            </div>
+
+            {/* CTA button */}
+            <a
+              href="/Rohit_Raut_LOR.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <button
+                style={{
+                  cursor: "pointer",
+                  fontFamily: JET,
+                  fontSize: "12px",
+                  letterSpacing: "0.06em",
+                  padding: "12px 28px",
+                  borderRadius: "8px",
+                  background: "rgba(61,220,132,0.08)",
+                  border: "1px solid rgba(61,220,132,0.35)",
+                  color: G,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "rgba(61,220,132,0.14)";
+                  e.currentTarget.style.borderColor = G;
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "rgba(61,220,132,0.08)";
+                  e.currentTarget.style.borderColor = "rgba(61,220,132,0.35)";
+                  e.currentTarget.style.transform = "none";
+                }}
+              >
+                📄 View Full Letter ↗
+              </button>
+            </a>
+
+            <p
+              style={{
+                fontFamily: JET, fontSize: "10px",
+                color: "rgba(61,220,132,0.35)", letterSpacing: "0.06em",
+                textAlign: "center",
+              }}
+            >
+              Original PDF · Issued May 2026
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
 
-export default Testimonial
+export default Testimonial;

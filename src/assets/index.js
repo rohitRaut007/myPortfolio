@@ -1,5 +1,7 @@
 import logo from "./images/logo.png";
 import bannerImg from "./images/bannerImg.png";
+import appleLogo from "./images/apple-logo.svg";
+import androidLogo from "./images/android-logo.svg";
 import projectOne from "./images/projects/projectOne.jpg";
 import projectTwo from "./images/projects/projectTwo.jpg";
 import projectThree from "./images/projects/projectThree.jpeg";
@@ -14,6 +16,8 @@ import rseditor from "./images/projects/rseditor.png"
 export {
   logo,
   bannerImg,
+  appleLogo,
+  androidLogo,
   projectOne,
   projectTwo,
   projectThree,

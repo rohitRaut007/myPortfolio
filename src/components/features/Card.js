@@ -1,37 +1,83 @@
-import React from 'react'
+import React from "react";
 import { HiArrowRight } from "react-icons/hi";
 
-const Card = ({title,des,icon}) => {
+const Card = ({ title, des, icon }) => {
+  const [hovered, setHovered] = React.useState(false);
+
   return (
-    <div className="w-full px-12 h-80 py-10 rounded-lg shadow-shadowOne flex items-center bg-gradient-to-r from-bodyColor to-[#202327] group hover:bg-gradient-to-b hover:from-black hover:to-[#1e2024] transition-colors duration-100 group">
-      <div className="h-72 overflow-y-hidden">
-        <div className="flex h-full flex-col gap-10 translate-y-16 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="w-10 h-8 flex flex-col justify-between">
-        
-            {icon ? (
-              <span className="text-5xl text-designColor">{icon}</span>
-            ) : (
-              <>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-                <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
-              </>
-            )}
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="w-full px-8 py-8 rounded-xl flex flex-col gap-6 transition-all duration-400 cursor-default relative overflow-hidden"
+      style={{
+        background: hovered
+          ? "linear-gradient(145deg, #0f180f, #111a11)"
+          : "linear-gradient(145deg, #0c140c, #0f160f)",
+        border: hovered
+          ? "1px solid rgba(61,220,132,0.35)"
+          : "1px solid rgba(61,220,132,0.1)",
+        boxShadow: hovered
+          ? "0 0 30px rgba(61,220,132,0.1)"
+          : "10px 10px 19px #050a05, -10px -10px 19px #0f170f",
+        transform: hovered ? "translateY(-3px)" : "translateY(0)",
+      }}
+    >
+      {/* Bottom accent line */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] transition-all duration-500"
+        style={{
+          background: "linear-gradient(90deg, #3DDC84, transparent)",
+          width: hovered ? "100%" : "0%",
+        }}
+      />
+
+      {/* Icon */}
+      <span
+        className="text-4xl transition-all duration-300"
+        style={{
+          color: hovered ? "#3DDC84" : "rgba(61,220,132,0.45)",
+          filter: hovered ? "drop-shadow(0 0 8px rgba(61,220,132,0.4))" : "none",
+        }}
+      >
+        {icon ? (
+          icon
+        ) : (
+          <div className="w-10 flex flex-col gap-1">
+            <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
+            <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
+            <span className="w-full h-[2px] rounded-lg bg-designColor inline-flex"></span>
           </div>
-          <div className="flex flex-col gap-6">
-            <h2 className="text-xl md:text-2xl font-titleFont font-bold text-gray-300">
-              {title}
-            </h2>
-            <p className="base">{des}</p>
-            <span className="text-2xl text-designColor">
-              <HiArrowRight />
-            </span>
-          </div>
-        </div>
-      </div>
+        )}
+      </span>
+
+      {/* Title */}
+      <h2
+        className="text-xl font-titleFont font-bold transition-colors duration-300"
+        style={{ color: hovered ? "#ffffff" : "#e5e7eb" }}
+      >
+        {title}
+      </h2>
+
+      {/* Description */}
+      <p
+        className="text-sm font-bodyFont leading-7 transition-colors duration-300"
+        style={{ color: hovered ? "#c4cfde" : "#6b7280" }}
+      >
+        {des}
+      </p>
+
+      {/* Arrow */}
+      <span
+        className="text-xl transition-all duration-300"
+        style={{
+          color: hovered ? "#3DDC84" : "#374151",
+          transform: hovered ? "translateX(8px)" : "translateX(0)",
+        }}
+      >
+        <HiArrowRight />
+      </span>
     </div>
   );
-}
+};
 
-export default Card
+export default Card;

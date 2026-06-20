@@ -1,38 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import {logo} from "../../assets/index"
-import { navLinksdata } from '../../constants';
+import { FaGithub, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { navLinksdata } from "../../constants";
+
+const JET = "'JetBrains Mono', 'Roboto Mono', monospace";
 
 const Navbar = () => {
-  const [showMenu, setShowMenu]=useState(false)
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-gray-600">
-      <div>
-      <h1
+    <nav
+      className="w-full sticky top-0 z-50"
       style={{
-        fontFamily: 'Arial, sans-serif',
-        fontSize: '28px',
-        color: '#ff5733',
-        textShadow: '1px 1px 4px rgba(0, 0, 0, 0.2)',
-        fontWeight: 'bold',
-        letterSpacing: '2px',
-        background: 'linear-gradient(90deg, #ff8a00, #e52e71)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        background: "#04070a",
+        borderBottom: "1px solid rgba(61,220,132,0.12)",
       }}
     >
-      Rohit Raut
-    </h1>
-      </div>
-      <div>
+      {/* Inner content — constrained to max-width */}
+      <div className="max-w-screen-xl mx-auto px-4 lgl:px-8 h-20 flex justify-between items-center font-titleFont">
+
+        {/* Brand */}
+        <span
+          style={{
+            fontFamily: JET,
+            fontSize: "20px",
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+            color: "#3DDC84",
+          }}
+        >
+          &lt; rr /&gt;
+        </span>
+
+        {/* Desktop nav */}
         <ul className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
           {navLinksdata.map(({ _id, title, link }) => (
             <li
-              className="text-base font-normal text-gray-400 tracking-wide cursor-pointer hover:text-designColor duration-300"
               key={_id}
+              className="text-sm font-normal tracking-wide cursor-pointer duration-300"
+              style={{ color: "#92a59b" }}
             >
               <Link
                 activeClass="active"
@@ -41,31 +49,50 @@ const Navbar = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                className="hover:text-designColor transition-colors duration-300"
               >
                 {title}
               </Link>
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger */}
         <span
           onClick={() => setShowMenu(!showMenu)}
-          className="text-xl mdl:hidden bg-black w-10 h-10 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer"
+          className="text-xl mdl:hidden w-10 h-10 inline-flex items-center justify-center rounded-full cursor-pointer"
+          style={{ color: "#3DDC84", background: "rgba(61,220,132,0.08)", border: "1px solid rgba(61,220,132,0.2)" }}
         >
           <FiMenu />
         </span>
+
+        {/* Mobile drawer */}
         {showMenu && (
-          <div className="w-[80%] h-screen overflow-scroll absolute top-0 left-0 bg-gray-900 p-4 scrollbar-hide">
+          <div
+            className="w-[80%] h-screen overflow-scroll absolute top-0 left-0 p-4 scrollbar-hide z-50"
+            style={{ background: "#04070a", borderRight: "1px solid rgba(61,220,132,0.12)" }}
+          >
             <div className="flex flex-col gap-8 py-2 relative">
-              <div>
-                <img className="w-32" src={logo} alt="logo" />
-                <p className="text-sm text-gray-400 mt-2">
-                </p>
-              </div>
+              {/* Brand in drawer */}
+              <span
+                style={{
+                  fontFamily: JET,
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#3DDC84",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                &lt; rr /&gt;
+              </span>
+
+              {/* Links */}
               <ul className="flex flex-col gap-4">
                 {navLinksdata.map((item) => (
                   <li
                     key={item._id}
-                    className="text-base font-normal text-gray-400 tracking-wide cursor-pointer hover:text-designColor duration-300"
+                    className="text-base font-normal tracking-wide cursor-pointer duration-300"
+                    style={{ color: "#92a59b" }}
                   >
                     <Link
                       onClick={() => setShowMenu(false)}
@@ -75,31 +102,43 @@ const Navbar = () => {
                       smooth={true}
                       offset={-70}
                       duration={500}
+                      className="hover:text-designColor transition-colors duration-300"
                     >
                       {item.title}
                     </Link>
                   </li>
                 ))}
               </ul>
+
+              {/* Social links */}
               <div className="flex flex-col gap-4">
-                <h2 className="text-base uppercase font-titleFont mb-4">
+                <h2
+                  className="text-xs uppercase tracking-widest"
+                  style={{ fontFamily: JET, color: "rgba(61,220,132,0.5)" }}
+                >
                   Find me in
                 </h2>
-                <div className="flex gap-4">
-                  <span className="bannerIcon">
-                    <FaFacebookF />
-                  </span>
-                  <span className="bannerIcon">
-                    <FaTwitter />
-                  </span>
-                  <span className="bannerIcon">
-                    <FaLinkedinIn />
-                  </span>
+                <div className="flex gap-3">
+                  <a href="https://github.com/rohitRaut007" target="_blank" rel="noopener noreferrer">
+                    <span className="bannerIcon"><FaGithub /></span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/rohit-raut-91369a27a/" target="_blank" rel="noopener noreferrer">
+                    <span className="bannerIcon"><FaLinkedinIn /></span>
+                  </a>
+                  <a href="https://x.com/rohit_raut007" target="_blank" rel="noopener noreferrer">
+                    <span className="bannerIcon"><FaTwitter /></span>
+                  </a>
+                  <a href="https://www.instagram.com/raut.rohit_/" target="_blank" rel="noopener noreferrer">
+                    <span className="bannerIcon"><FaInstagram /></span>
+                  </a>
                 </div>
               </div>
+
+              {/* Close button */}
               <span
                 onClick={() => setShowMenu(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-designColor duration-300 text-2xl cursor-pointer"
+                className="absolute top-4 right-4 text-2xl cursor-pointer duration-300"
+                style={{ color: "#92a59b" }}
               >
                 <MdClose />
               </span>
@@ -107,8 +146,8 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
