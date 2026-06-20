@@ -23,10 +23,10 @@
 }
 
 [data-theme="light"] {
-  --c-bg:           #f9fafb;
-  --c-bg-card:      #ffffff;
-  --c-bg-card-2:    #f0f4f1;
-  --c-bg-input:     #f3f4f6;
+  --c-bg:           #c8cdd4;
+  --c-bg-card:      #f5f6f8;
+  --c-bg-card-2:    #dde1e6;
+  --c-bg-input:     #e8eaed;
   --c-text-1:       #0d1117;
   --c-text-2:       #1f2937;
   --c-text-3:       #374151;
@@ -34,10 +34,10 @@
   --c-accent:       #16a34a;
   --c-border:       rgba(22,163,74,0.18);
   --c-border-s:     rgba(22,163,74,0.45);
-  --c-shadow:       #e5e7eb;
-  --c-shadow-inv:   #ffffff;
-  --c-overlay:      rgba(249,250,251,0.50);
-  --c-scanline:     rgba(0,0,0,0.018);
+  --c-shadow:       #b2b8c0;
+  --c-shadow-inv:   #dde1e6;
+  --c-overlay:      rgba(200,205,212,0.40);
+  --c-scanline:     rgba(0,0,0,0.022);
 }
 
 /* Light theme: stronger heading weight for readability */

@@ -128,8 +128,8 @@ const Footer = () => {
           </div>
 
           <a
-            href="/Rohit_Raut_Resume.pdf"
-            download="Rohit_Raut_Resume.pdf"
+            href="/Rohit_Raut_Resume_FINAL.pdf"
+            download="Rohit_Raut_Resume_FINAL.pdf"
             className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-medium font-bodyFont transition-all duration-300 w-full"
             style={{
               background: "var(--c-border)",

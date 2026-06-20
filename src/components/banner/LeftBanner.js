@@ -120,7 +120,7 @@ const LeftBanner = () => {
           </button>
         </Link>
 
-        <a href="/Rohit_Raut_Resume.pdf" download="Rohit_Raut_Resume.pdf">
+        <a href="/Rohit_Raut_Resume_FINAL.pdf" download="Rohit_Raut_Resume_FINAL.pdf">
           <button
             style={{
               cursor: "pointer", fontFamily: DISPLAY,
