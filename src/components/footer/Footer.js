@@ -23,12 +23,12 @@ const navLinks = [
 const Footer = () => {
   return (
     <div className="w-full pt-16 pb-10 border-b-[1px] border-b-black">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lgl:gap-10">
 
         {/* ── Col 1: Brand ── */}
         <div className="flex flex-col gap-6">
           <img className="w-28" src={logo} alt="Rohit Raut" />
-          <p className="text-sm leading-6 max-w-xs" style={{ color: "var(--c-text-3)" }}>
+          <p className="text-sm leading-6 max-w-none sml:max-w-xs" style={{ color: "var(--c-text-3)" }}>
             React Native &amp; Full Stack Engineer. Building production mobile
             apps with Django, AWS, and OpenAI integrations.
           </p>

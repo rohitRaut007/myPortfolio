@@ -152,7 +152,7 @@ const Features = () => {
         {STATS.map(({ value, label }, i) => (
           <div
             key={i}
-            className="flex flex-col items-center justify-center py-5 px-4 text-center"
+            className="flex flex-col items-center justify-center py-4 px-3 sml:py-5 sml:px-4 text-center"
             style={{ background: "var(--c-bg-card)" }}
           >
             <span

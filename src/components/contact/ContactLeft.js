@@ -6,13 +6,13 @@ const ContactLeft = () => {
   return (
     <div className="w-full lgl:w-[35%] h-full p-4 lgl:p-8 rounded-lg flex flex-col gap-8 justify-center" style={{ background: "var(--c-bg-card)", border: "1px solid var(--c-border)" }}>
       <img
-        className="w-full h-64 object-cover rounded-lg mb-2"
+        className="w-full h-44 sml:h-52 lgl:h-64 object-cover rounded-lg mb-2"
         src={contactImg}
         alt="Rohit Raut"
       />
       <div className="flex flex-col gap-4">
         <div>
-          <h3 className="text-3xl font-bold" style={{ color: "var(--c-text-1)" }}>Rohit Raut</h3>
+          <h3 className="text-2xl sml:text-3xl font-bold" style={{ color: "var(--c-text-1)" }}>Rohit Raut</h3>
           <p className="text-sm font-medium mt-1" style={{ color: "var(--c-accent)" }}>
             React Native &amp; Mobile Developer
           </p>
@@ -57,7 +57,7 @@ const ContactLeft = () => {
         <h2 className="text-xs uppercase font-titleFont tracking-widest" style={{ color: "var(--c-text-4)" }}>
           Find me on
         </h2>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           <a href="https://github.com/rohitRaut007" target="_blank" rel="noopener noreferrer">
             <span className="bannerIcon"><FaGithub /></span>
           </a>

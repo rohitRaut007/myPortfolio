@@ -46,10 +46,10 @@ const PhoneFeatured = () => {
       {/* Main split layout */}
       <div className="flex flex-col lgl:flex-row gap-0">
         {/* Left — Case study text */}
-        <div className="w-full lgl:w-1/2 p-6 lgl:p-10 flex flex-col justify-between gap-6">
+        <div className="w-full lgl:w-1/2 p-4 sml:p-6 lgl:p-10 flex flex-col justify-between gap-5 sml:gap-6">
           <div>
             <h3
-              className="text-3xl lgl:text-4xl font-bold font-titleFont mb-2"
+              className="text-2xl sml:text-3xl lgl:text-4xl font-bold font-titleFont mb-2"
               style={{ lineHeight: 1.2, color: "var(--c-text-1)" }}
             >
               Sports Tech Platform{" "}
@@ -168,8 +168,8 @@ const PhoneFeatured = () => {
         </div>
 
         {/* Right — 3D Phone */}
-        <div className="w-full lgl:w-1/2 flex items-center justify-center p-6 lgl:p-10">
-          <div style={{ width: "100%", height: "480px" }}>
+        <div className="w-full lgl:w-1/2 flex items-center justify-center p-4 sml:p-6 lgl:p-10">
+          <div style={{ width: "100%", height: "clamp(280px, 55vw, 480px)" }}>
             {shouldLoad ? (
               <Suspense fallback={<PhoneFallback activeApp={activeApp} />}>
                 <Phone3D activeApp={activeApp} />

@@ -18,21 +18,21 @@ const LeftBanner = () => {
   });
 
   return (
-    <div style={{ maxWidth: "600px", color: "var(--c-text-2)" }}>
+    <div style={{ maxWidth: "100%", color: "var(--c-text-2)" }}>
 
       {/* Availability badge */}
-      <div style={{ marginBottom: "14px" }}>
+      <div style={{ marginBottom: "16px" }}>
         <span
           style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
-            padding: "5px 14px", borderRadius: "999px",
+            padding: "6px 14px", borderRadius: "999px",
             background: "var(--c-border)",
             border: "1px solid var(--c-border-s)",
             fontFamily: JET, fontSize: "11px", color: "var(--c-accent)",
-            letterSpacing: "0.06em",
+            letterSpacing: "0.06em", flexWrap: "wrap",
           }}
         >
-          <span style={{ position: "relative", display: "inline-flex" }}>
+          <span style={{ position: "relative", display: "inline-flex", flexShrink: 0 }}>
             <span
               className="animate-ping"
               style={{
@@ -43,7 +43,7 @@ const LeftBanner = () => {
             />
             <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--c-accent)", display: "inline-flex", flexShrink: 0 }} />
           </span>
-          Available &middot; Open to Full-Time &amp; Contract Roles
+          <span>Available &middot; Open to Full-Time &amp; Contract</span>
         </span>
       </div>
 
@@ -58,13 +58,13 @@ const LeftBanner = () => {
       {/* Name + role */}
       <h1 style={{
         margin: 0, fontFamily: DISPLAY, fontWeight: 700,
-        fontSize: "clamp(34px, 4.4vw, 60px)",
-        lineHeight: 1.0, letterSpacing: "-0.02em", color: "var(--c-text-1)",
+        fontSize: "clamp(36px, 8vw, 60px)",
+        lineHeight: 1.05, letterSpacing: "-0.02em", color: "var(--c-text-1)",
       }}>
         I'm Rohit Raut
         <span style={{
-          display: "block", marginTop: "6px",
-          fontSize: "clamp(22px, 2.8vw, 40px)",
+          display: "block", marginTop: "8px",
+          fontSize: "clamp(20px, 5vw, 40px)",
           fontWeight: 600, color: "var(--c-text-1)",
         }}>
           a <span style={{ color: "var(--c-accent)" }}>{text}</span>
@@ -74,19 +74,18 @@ const LeftBanner = () => {
 
       {/* Body */}
       <p style={{
-        margin: "14px 0 0", maxWidth: "480px",
-        fontSize: "15px", lineHeight: 1.6, color: "var(--c-text-3)",
+        margin: "18px 0 0", maxWidth: "min(480px, 100%)",
+        fontSize: "clamp(14px, 3.5vw, 15px)", lineHeight: 1.7, color: "var(--c-text-3)",
         fontFamily: "system-ui, -apple-system, sans-serif",
       }}>
         Full stack engineer, 1.5 years shipping mobile and backend. Built a
-        sports tech platform for athlete monitoring that's live on both stores,
-        using React Native and Django. I own features from database schema
-        to production release.
+        sports tech platform for athlete monitoring — live on both stores —
+        using React Native and Django.
       </p>
 
       {/* Ships on pills */}
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "12px", flexWrap: "wrap" }}>
-        <span style={{ fontFamily: JET, fontSize: "12px", letterSpacing: "0.08em", color: "var(--c-text-4)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "16px", flexWrap: "wrap" }}>
+        <span style={{ fontFamily: JET, fontSize: "11px", letterSpacing: "0.08em", color: "var(--c-text-4)" }}>
           Ships on
         </span>
         {["iOS", "Android"].map(label => (
@@ -101,15 +100,16 @@ const LeftBanner = () => {
         ))}
       </div>
 
-      {/* CTAs */}
-      <div style={{ display: "flex", gap: "14px", marginTop: "14px", flexWrap: "wrap" }}>
-        <Link to="contact" smooth offset={-70} duration={500}>
+      {/* CTAs — stack on mobile, row on desktop */}
+      <div className="flex flex-col sml:flex-row gap-3 mt-5">
+        <Link to="contact" smooth offset={-70} duration={500} className="w-full sml:w-auto">
           <button
+            className="w-full sml:w-auto"
             style={{
               border: "none", cursor: "pointer", fontFamily: DISPLAY,
-              padding: "11px 26px", borderRadius: "10px",
+              padding: "13px 28px", borderRadius: "10px",
               background: "var(--c-accent)", color: "#ffffff",
-              fontWeight: 600, fontSize: "14px",
+              fontWeight: 600, fontSize: "15px",
               boxShadow: "0 6px 24px var(--c-border-s)",
               transition: "transform .18s ease, box-shadow .18s ease",
             }}
@@ -120,21 +120,23 @@ const LeftBanner = () => {
           </button>
         </Link>
 
-        <a href="/Rohit_Raut_Resume_FINAL.pdf" download="Rohit_Raut_Resume_FINAL.pdf">
+        <a href="/Rohit_Raut_Resume_FINAL.pdf" download="Rohit_Raut_Resume_FINAL.pdf" className="w-full sml:w-auto">
           <button
+            className="w-full sml:w-auto"
             style={{
               cursor: "pointer", fontFamily: DISPLAY,
-              padding: "10px 22px", borderRadius: "10px",
+              padding: "12px 24px", borderRadius: "10px",
               background: "var(--c-bg-card-2)",
               border: "1px solid var(--c-border-s)",
-              color: "var(--c-text-2)", fontWeight: 600, fontSize: "14px",
-              display: "inline-flex", alignItems: "center", gap: "8px",
+              color: "var(--c-text-2)", fontWeight: 600, fontSize: "15px",
+              display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
               transition: "border-color .18s ease, background .18s ease",
+              width: "100%",
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--c-accent)"; e.currentTarget.style.background = "var(--c-border)"; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--c-border-s)"; e.currentTarget.style.background = "var(--c-bg-card-2)"; }}
           >
-            <FaDownload style={{ fontSize: "12px", opacity: 0.7 }} />
+            <FaDownload style={{ fontSize: "13px", opacity: 0.7 }} />
             Download CV
           </button>
         </a>
@@ -142,22 +144,22 @@ const LeftBanner = () => {
 
       {/* Stats row */}
       <div style={{
-        display: "flex", alignItems: "center", gap: "14px", marginTop: "10px",
+        display: "flex", alignItems: "center", gap: "14px", marginTop: "16px",
         fontFamily: JET, fontSize: "12px", color: "var(--c-text-4)", flexWrap: "wrap",
       }}>
-        <span><span style={{ color: "var(--c-text-2)" }}>2</span> stores</span>
+        <span><span style={{ color: "var(--c-text-2)", fontWeight: 600 }}>2</span> stores</span>
         <span style={{ opacity: 0.35 }}>/</span>
-        <span><span style={{ color: "var(--c-text-2)" }}>1</span> codebase</span>
+        <span><span style={{ color: "var(--c-text-2)", fontWeight: 600 }}>1</span> codebase</span>
         <span style={{ opacity: 0.35 }}>/</span>
-        <span><span style={{ color: "var(--c-text-2)" }}>1.5</span> yrs shipping</span>
+        <span><span style={{ color: "var(--c-text-2)", fontWeight: 600 }}>1.5</span> yrs shipping</span>
       </div>
 
       {/* Social links */}
-      <div style={{ marginTop: "12px" }}>
-        <div style={{ fontFamily: JET, fontSize: "10px", letterSpacing: "0.12em", color: "var(--c-border-s)", marginBottom: "8px", textTransform: "uppercase" }}>
+      <div style={{ marginTop: "20px" }}>
+        <div style={{ fontFamily: JET, fontSize: "10px", letterSpacing: "0.12em", color: "var(--c-border-s)", marginBottom: "10px", textTransform: "uppercase" }}>
           Find me in
         </div>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           {[
             { href: "https://github.com/rohitRaut007", icon: <FaGithub /> },
             { href: "https://www.instagram.com/raut.rohit_/", icon: <FaInstagram /> },

@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from "react";
 
 /* ─── Constants ─────────────────────────────────────── */
-const N = 1480;           // particles
-const SAMPLE_S = 220;     // offscreen canvas size for shape sampling
-const MORPH_MS = 4400;    // auto-morph interval
+const N        = 1480;
+const SAMPLE_S = 220;
+const MORPH_MS = 4400;
 const SHAPE_ORDER = ["ios", "android", "react"];
-const RGB = "61,220,132"; // #3DDC84
+const RGB      = "61,220,132";
 
-/* ─── Shape drawing helpers (on offscreen canvas) ─── */
+/* ─── Shape drawing helpers ─────────────────────────── */
 function rrect(ctx, x, y, w, h, r) {
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -85,40 +85,52 @@ function sampleN(drawFn, n) {
 /* ─── Component ─────────────────────────────────────── */
 const HeroCanvas = ({ onPlatformChange }) => {
   const canvasRef = useRef(null);
-  const cbRef = useRef(onPlatformChange);
+  const cbRef    = useRef(onPlatformChange);
   useEffect(() => { cbRef.current = onPlatformChange; }, [onPlatformChange]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    /* mutable state in a plain object — never triggers re-renders */
     const S = {
       W: 0, H: 0, ctx: null, dpr: 1,
-      parts: [],         // particles
-      nodes: [],         // background network dots
-      targets: null,     // { ios, android, react } arrays of [x,y] normalised
+      parts: [],
+      nodes: [],
+      targets: null,
       shapeKey: "ios",
       shapeIdx: 0,
       lastMorph: performance.now(),
       mouse: { x: -9999, y: -9999, active: false },
-      par: { x: 0, y: 0 },  // parallax smooth value
+      par: { x: 0, y: 0 },
       boxCx: 0, boxCy: 0, boxSize: 0,
+      isMobile: false,
     };
 
-    /* ── Canvas sizing ──────────────────────────── */
+    /* ── Canvas + responsive box sizing ────────── */
     const resize = () => {
       const wrap = canvas.parentElement;
-      S.W = wrap ? wrap.offsetWidth : window.innerWidth;
+      S.W = wrap ? wrap.offsetWidth  : window.innerWidth;
       S.H = wrap ? wrap.offsetHeight : window.innerHeight;
       S.dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = S.W * S.dpr;
+      canvas.width  = S.W * S.dpr;
       canvas.height = S.H * S.dpr;
       S.ctx = canvas.getContext("2d");
       S.ctx.setTransform(S.dpr, 0, 0, S.dpr, 0, 0);
-      S.boxCx = S.W * 0.74;
-      S.boxCy = S.H * 0.20;          // upper quarter — above the code card
-      S.boxSize = Math.min(S.W, S.H) * 0.36;  // sized to stay in upper zone
+
+      S.isMobile = S.W < 768;
+
+      if (S.isMobile) {
+        /* Mobile: center the logo in upper third of hero */
+        S.boxCx  = S.W * 0.50;
+        S.boxCy  = S.H * 0.30;
+        S.boxSize = S.W * 0.60;   /* bigger and more prominent */
+      } else {
+        /* Desktop: right column, upper zone */
+        S.boxCx  = S.W * 0.74;
+        S.boxCy  = S.H * 0.20;
+        S.boxSize = Math.min(S.W, S.H) * 0.36;
+      }
+
       if (S.nodes.length) initNodes();
     };
 
@@ -134,11 +146,14 @@ const HeroCanvas = ({ onPlatformChange }) => {
       }));
     };
 
-    /* ── Background nodes ───────────────────────── */
+    /* ── Background nodes — denser on mobile ───── */
     const initNodes = () => {
-      const count = Math.max(28, Math.min(Math.round((S.W * S.H) / 24000), 92));
+      const { W, H, isMobile } = S;
+      const count = isMobile
+        ? Math.max(24, Math.min(Math.round((W * H) / 8000), 55))   // ~3× denser on mobile
+        : Math.max(28, Math.min(Math.round((W * H) / 24000), 92));
       S.nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * S.W, y: Math.random() * S.H,
+        x: Math.random() * W, y: Math.random() * H,
         vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
       }));
     };
@@ -146,9 +161,9 @@ const HeroCanvas = ({ onPlatformChange }) => {
     /* ── Build shape targets ────────────────────── */
     const buildTargets = () => {
       S.targets = {
-        ios: sampleN(drawApple, N),
+        ios:     sampleN(drawApple,   N),
         android: sampleN(drawAndroid, N),
-        react: sampleN(drawReact, N),
+        react:   sampleN(drawReact,   N),
       };
     };
 
@@ -158,7 +173,6 @@ const HeroCanvas = ({ onPlatformChange }) => {
       S.shapeKey = SHAPE_ORDER[S.shapeIdx];
       S.lastMorph = performance.now();
       if (cbRef.current) cbRef.current(S.shapeKey);
-      /* burst out */
       for (const p of S.parts) {
         const dx = p.x - S.boxCx, dy = p.y - S.boxCy, d = Math.hypot(dx, dy) || 1;
         const f = 2.4 + Math.random() * 3.2;
@@ -166,7 +180,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
       }
     };
 
-    /* ── Click burst ────────────────────────────── */
+    /* ── Burst at (mx, my) ──────────────────────── */
     const burst = (mx, my) => {
       for (const p of S.parts) {
         const dx = p.x - mx, dy = p.y - my, d = Math.hypot(dx, dy) || 1;
@@ -174,7 +188,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
       }
     };
 
-    /* ── Draw background node network ──────────── */
+    /* ── Draw background network ────────────────── */
     const drawNodes = (ctx, ox, oy) => {
       const { nodes, W, H, mouse } = S;
       for (const n of nodes) {
@@ -200,7 +214,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
         for (const n of nodes) {
           const dx = n.x - mouse.x, dy = n.y - mouse.y, d = Math.hypot(dx, dy);
           if (d < 200) {
-            ctx.strokeStyle = `rgba(${RGB},${((1 - d / 200) * 0.24).toFixed(3)})`;
+            ctx.strokeStyle = `rgba(${RGB},${((1 - d / 200) * 0.28).toFixed(3)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(n.x + ox, n.y + oy);
@@ -215,28 +229,25 @@ const HeroCanvas = ({ onPlatformChange }) => {
       }
     };
 
-    /* ── Main RAF loop ──────────────────────────── */
+    /* ── RAF loop ───────────────────────────────── */
     let rafId;
     const frame = (t) => {
       const { ctx, W, H, parts, targets, shapeKey, boxCx, boxCy, boxSize, mouse, par } = S;
       if (!ctx) { rafId = requestAnimationFrame(frame); return; }
 
-      /* Auto-morph */
       if (t - S.lastMorph > MORPH_MS) morph();
 
       ctx.clearRect(0, 0, W, H);
 
-      /* Smooth parallax */
       const tpx = mouse.active ? (mouse.x / W - 0.5) : 0;
       const tpy = mouse.active ? (mouse.y / H - 0.5) : 0;
       par.x += (tpx - par.x) * 0.06;
       par.y += (tpy - par.y) * 0.06;
-      const nodeOx = par.x * -8, nodeOy = par.y * -8;
-      const offx = par.x * -20, offy = par.y * -20;
+      const nodeOx = par.x * -8,  nodeOy = par.y * -8;
+      const offx   = par.x * -20, offy   = par.y * -20;
 
       drawNodes(ctx, nodeOx, nodeOy);
 
-      /* Radial glow (pulses on morph) */
       const pulse = Math.max(0, 1 - (t - S.lastMorph) / 1500);
       const gx = boxCx + offx, gy = boxCy + offy;
       const gr = ctx.createRadialGradient(gx, gy, 0, gx, gy, boxSize * 0.78);
@@ -245,7 +256,6 @@ const HeroCanvas = ({ onPlatformChange }) => {
       ctx.fillStyle = gr;
       ctx.beginPath(); ctx.arc(gx, gy, boxSize * 0.78, 0, 6.2832); ctx.fill();
 
-      /* Particles */
       const tg = targets[shapeKey];
       const bx = boxCx - boxSize / 2 + offx;
       const by = boxCy - boxSize / 2 + offy;
@@ -257,11 +267,9 @@ const HeroCanvas = ({ onPlatformChange }) => {
         const a = tg[i] || [0.5, 0.5];
         const tx = bx + a[0] * boxSize, ty = by + a[1] * boxSize;
 
-        /* Spring toward target */
         p.vx += (tx - p.x) * 0.045; p.vy += (ty - p.y) * 0.045;
         p.vx *= 0.82; p.vy *= 0.82;
 
-        /* Cursor repulsion */
         if (active) {
           const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
           if (d2 < 13000) {
@@ -274,7 +282,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
         p.x += p.vx; p.y += p.vy;
 
         const wob = Math.sin(t * 0.001 + p.seed) * 0.5;
-        const tw = 0.55 + 0.45 * Math.sin(t * 0.0016 + p.seed * 3);
+        const tw  = 0.55 + 0.45 * Math.sin(t * 0.0016 + p.seed * 3);
         ctx.fillStyle = `rgba(${RGB},${(0.58 * p.br * tw).toFixed(3)})`;
         ctx.beginPath(); ctx.arc(p.x + wob, p.y + wob, p.sz, 0, 6.2832); ctx.fill();
       }
@@ -284,18 +292,72 @@ const HeroCanvas = ({ onPlatformChange }) => {
     };
 
     /* ── Event listeners ────────────────────────── */
-    const onMove = (e) => {
-      const r = (canvas.parentElement || document.documentElement).getBoundingClientRect();
+    const section = canvas.parentElement || document.documentElement;
+
+    /* Pointer Events API — works for both mouse AND touch uniformly */
+    const onPointerMove = (e) => {
+      const r = section.getBoundingClientRect();
       S.mouse.x = e.clientX - r.left;
       S.mouse.y = e.clientY - r.top;
       S.mouse.active = true;
     };
-    const onLeave = () => { S.mouse.active = false; };
-    const onClick = (e) => {
-      const r = (canvas.parentElement || document.documentElement).getBoundingClientRect();
+
+    const onPointerLeave = () => { S.mouse.active = false; };
+
+    /* Tap / click → burst + morph */
+    const onPointerUp = (e) => {
+      /* Ignore if the tap was on an interactive element (button, a) */
+      if (e.target && (e.target.closest("button") || e.target.closest("a"))) return;
+      const r = section.getBoundingClientRect();
       burst(e.clientX - r.left, e.clientY - r.top);
       morph();
     };
+
+    /*
+     * Device Orientation (gyroscope) — drives parallax on mobile when the user
+     * tilts the phone, making particles feel alive without needing a cursor.
+     * Works natively on Android. On iOS 13+ requires permission via a user
+     * gesture; we attempt silently — Android users get it for free, iOS users
+     * still get touch-based interaction.
+     */
+    let gyroActive = false;
+    const onOrientation = (e) => {
+      if (!S.isMobile || e.gamma == null) return;
+      gyroActive = true;
+      /* gamma: left/right tilt -90→90, beta: forward/back tilt -180→180 */
+      const gamma = Math.max(-45, Math.min(45, e.gamma));
+      const beta  = Math.max(-45, Math.min(45, (e.beta || 0) - 25)); /* -25° for natural phone hold */
+      S.mouse.x = S.W * 0.5 + (gamma / 45) * S.W * 0.35;
+      S.mouse.y = S.H * 0.5 + (beta  / 45) * S.H * 0.25;
+      S.mouse.active = true;
+    };
+
+    /*
+     * iOS 13+ permission gate — we wire it to the first tap anywhere on the
+     * hero so users who tap naturally unlock gyro without a popup.
+     */
+    const requestGyroPermission = () => {
+      if (typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission()
+          .then(state => {
+            if (state === "granted")
+              window.addEventListener("deviceorientation", onOrientation, { passive: true });
+          })
+          .catch(() => {});
+      }
+      /* Remove this one-shot listener after first tap */
+      section.removeEventListener("pointerup", requestGyroPermission);
+    };
+
+    /* Attach all listeners */
+    section.addEventListener("pointermove",  onPointerMove,  { passive: true });
+    section.addEventListener("pointerleave", onPointerLeave, { passive: true });
+    section.addEventListener("pointercancel",onPointerLeave, { passive: true });
+    section.addEventListener("pointerup",    onPointerUp);
+    section.addEventListener("pointerup",    requestGyroPermission, { once: true });
+    window.addEventListener("deviceorientation", onOrientation, { passive: true });
+    window.addEventListener("resize", resize, { passive: true });
 
     /* ── Init ───────────────────────────────────── */
     resize();
@@ -304,18 +366,14 @@ const HeroCanvas = ({ onPlatformChange }) => {
     initNodes();
     rafId = requestAnimationFrame(frame);
 
-    window.addEventListener("resize", resize, { passive: true });
-    const el = canvas.parentElement || document;
-    el.addEventListener("mousemove", onMove, { passive: true });
-    el.addEventListener("mouseleave", onLeave);
-    el.addEventListener("click", onClick);
-
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-      el.removeEventListener("click", onClick);
+      window.removeEventListener("deviceorientation", onOrientation);
+      section.removeEventListener("pointermove",   onPointerMove);
+      section.removeEventListener("pointerleave",  onPointerLeave);
+      section.removeEventListener("pointercancel", onPointerLeave);
+      section.removeEventListener("pointerup",     onPointerUp);
     };
   }, []);
 

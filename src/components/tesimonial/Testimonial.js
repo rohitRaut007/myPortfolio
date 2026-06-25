@@ -35,7 +35,7 @@ const Testimonial = () => {
         <div className="flex flex-col lgl:flex-row">
 
           {/* ── LEFT: LOR content ── */}
-          <div className="w-full lgl:w-[55%] p-8 lgl:p-12 flex flex-col gap-7">
+          <div className="w-full lgl:w-[55%] p-5 sml:p-8 lgl:p-12 flex flex-col gap-5 sml:gap-7">
 
             {/* Company header */}
             <div className="flex flex-col gap-3">
@@ -176,8 +176,8 @@ const Testimonial = () => {
 
           {/* ── RIGHT: Document preview + CTA ── */}
           <div
-            className="w-full lgl:w-[45%] p-8 lgl:p-12 flex flex-col items-center justify-center gap-6"
-            style={{ borderLeft: "1px solid var(--c-border)" }}
+            className="w-full lgl:w-[45%] p-5 sml:p-8 lgl:p-12 flex flex-col items-center justify-center gap-6 border-t lgl:border-t-0 lgl:border-l"
+            style={{ borderColor: "var(--c-border)" }}
           >
             {/* Document card */}
             <div

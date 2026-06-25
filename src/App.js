@@ -16,7 +16,7 @@ const AppInner = () => {
   return (
     <div
       data-theme={theme}
-      className="w-full min-h-screen bg-bodyColor text-lightText"
+      className="w-full min-h-screen bg-bodyColor text-lightText overflow-x-hidden"
     >
       <Navbar />
       <Banner />

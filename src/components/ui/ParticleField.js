@@ -41,10 +41,10 @@ const ParticleField = () => {
       r: 1.0 + Math.random() * 1.4,
     }));
 
-    const onMouseMove = (e) => {
+    const onPointerMove = (e) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
 
     if (prefersReduced) {
       ctx.clearRect(0, 0, W, H);
@@ -56,7 +56,7 @@ const ParticleField = () => {
       }
       return () => {
         window.removeEventListener("resize", resize);
-        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("pointermove", onPointerMove);
       };
     }
 
@@ -130,7 +130,7 @@ const ParticleField = () => {
     return () => {
       running = false;
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("pointermove", onPointerMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);

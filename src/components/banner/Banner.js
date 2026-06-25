@@ -11,8 +11,8 @@ const Banner = () => {
       id="home"
       className="relative overflow-x-hidden font-titleFont"
       style={{
-        paddingTop: "20px",
-        paddingBottom: "72px",
+        paddingTop: "clamp(12px, 2vw, 20px)",
+        paddingBottom: "clamp(40px, 8vw, 72px)",
         background: "var(--c-bg)",
       }}
     >
@@ -37,21 +37,19 @@ const Banner = () => {
 
       {/* Content wrapper */}
       <div
-        className="relative"
-        style={{ zIndex: 2, maxWidth: "1280px", margin: "0 auto", padding: "0 48px" }}
+        className="relative px-4 sml:px-8 lgl:px-12"
+        style={{ zIndex: 2, maxWidth: "1280px", margin: "0 auto" }}
       >
         {/* Hero grid */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.05fr 0.95fr",
-            gap: "48px",
-            alignItems: "flex-start",
-          }}
-          className="max-mdl:grid-cols-1 max-mdl:pt-6 max-mdl:pb-12"
+          className="grid grid-cols-1 mdl:grid-cols-[1.05fr_0.95fr] pt-8 mdl:pt-4 pb-10 mdl:pb-0"
+          style={{ gap: "clamp(16px, 4vw, 48px)", alignItems: "flex-start" }}
         >
           <LeftBanner />
-          <RightBanner platform={platform} />
+          {/* Code terminal — desktop only */}
+          <div className="hidden mdl:block">
+            <RightBanner platform={platform} />
+          </div>
         </div>
       </div>
     </section>

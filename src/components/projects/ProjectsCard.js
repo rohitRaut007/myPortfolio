@@ -21,7 +21,7 @@ const ProjectsCard = ({ title, des, src, video, link }) => {
       <div className="w-full h-[80%] overflow-hidden rounded-lg">
         {video ? (
           <video
-            className="w-full h-48 object-cover group-hover:scale-105 duration-300 cursor-pointer rounded-lg"
+            className="w-full h-44 sml:h-48 object-cover group-hover:scale-105 duration-300 cursor-pointer rounded-lg"
             src={video}
             autoPlay
             loop
@@ -30,7 +30,7 @@ const ProjectsCard = ({ title, des, src, video, link }) => {
           />
         ) : (
           <img
-            className="w-full h-48 object-cover group-hover:scale-105 duration-300 cursor-pointer rounded-lg"
+            className="w-full h-44 sml:h-48 object-cover group-hover:scale-105 duration-300 cursor-pointer rounded-lg"
             src={src}
             alt={title}
           />

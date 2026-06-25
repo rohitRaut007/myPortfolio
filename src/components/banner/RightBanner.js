@@ -108,7 +108,7 @@ const RightBanner = ({ platform = "ios" }) => {
   const currentSnip = SNIPPETS[codeState.snip];
 
   return (
-    <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "520px" }}>
+    <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "auto" }}>
 
       {/* Top 40% — floating icons zone (HeroCanvas renders here) */}
       <div style={{ flex: 2 }} />
@@ -118,11 +118,11 @@ const RightBanner = ({ platform = "ios" }) => {
 
       {/* Status bar */}
       <div style={{
-        display: "flex", alignItems: "center", justifyContent: "center", gap: "12px",
-        fontFamily: JET, fontSize: "11px", letterSpacing: "0.05em",
+        display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(6px, 2vw, 12px)",
+        fontFamily: JET, fontSize: "clamp(9px, 1.8vw, 11px)", letterSpacing: "0.05em",
       }}>
         <span style={{ color: "var(--c-text-4)" }}>▸ RENDERING</span>
-        <span style={{ color: G, fontWeight: 600, minWidth: "104px", textAlign: "center" }}>
+        <span style={{ color: G, fontWeight: 600, minWidth: "clamp(70px, 15%, 104px)", textAlign: "center" }}>
           {platformLabel}
         </span>
         <span style={{ width: "1px", height: "14px", background: "rgba(180,210,195,0.18)", display: "inline-block" }} />
@@ -142,7 +142,7 @@ const RightBanner = ({ platform = "ios" }) => {
         {/* Top bar */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "13px 18px", borderBottom: "1px solid var(--c-border)",
+          padding: "clamp(10px, 1.5vw, 13px) clamp(12px, 2vw, 18px)", borderBottom: "1px solid var(--c-border)",
         }}>
           <div style={{ display: "flex", gap: "8px" }}>
             <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#ff5f57", display: "inline-block" }} />
@@ -156,14 +156,14 @@ const RightBanner = ({ platform = "ios" }) => {
 
         {/* Code body */}
         <div style={{
-          padding: "14px 18px",
+          padding: "clamp(10px, 2vw, 14px) clamp(12px, 2vw, 18px)",
           fontFamily: JET,
-          fontSize: "12.5px",
+          fontSize: "clamp(10px, 2vw, 12.5px)",
           lineHeight: 1.75,
-          minHeight: "170px",
+          minHeight: "clamp(120px, 22vw, 170px)",
         }}>
           {codeLines.map((line, li) => (
-            <div key={li} style={{ display: "flex", gap: "18px", minHeight: "1.85em" }}>
+            <div key={li} style={{ display: "flex", gap: "clamp(10px, 2vw, 18px)", minHeight: "1.85em" }}>
               <span style={{ color: "#3a4d44", width: "14px", textAlign: "right", flexShrink: 0, userSelect: "none" }}>
                 {line.num}
               </span>
@@ -188,8 +188,8 @@ const RightBanner = ({ platform = "ios" }) => {
         {/* Bottom bar */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "11px 18px", borderTop: "1px solid var(--c-border)",
-          fontFamily: JET, fontSize: "12px", color: "var(--c-text-4)",
+          padding: "clamp(9px, 1.5vw, 11px) clamp(12px, 2vw, 18px)", borderTop: "1px solid var(--c-border)",
+          fontFamily: JET, fontSize: "clamp(10px, 1.8vw, 12px)", color: "var(--c-text-4)",
         }}>
           <span>{currentSnip.lang}</span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: "7px", color: G }}>

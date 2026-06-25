@@ -104,7 +104,7 @@ const Navbar = () => {
         {/* Mobile drawer */}
         {showMenu && (
           <div
-            className="w-[80%] h-screen overflow-scroll absolute top-0 left-0 p-4 scrollbar-hide z-50"
+            className="w-full sml:w-[80%] h-screen overflow-scroll absolute top-0 left-0 p-4 scrollbar-hide z-50"
             style={{
               background: "var(--c-bg-card)",
               borderRight: "1px solid var(--c-border)",
