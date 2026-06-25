@@ -320,10 +320,8 @@ const HeroCanvas = ({ onPlatformChange }) => {
      * gesture; we attempt silently — Android users get it for free, iOS users
      * still get touch-based interaction.
      */
-    let gyroActive = false;
     const onOrientation = (e) => {
       if (!S.isMobile || e.gamma == null) return;
-      gyroActive = true;
       /* gamma: left/right tilt -90→90, beta: forward/back tilt -180→180 */
       const gamma = Math.max(-45, Math.min(45, e.gamma));
       const beta  = Math.max(-45, Math.min(45, (e.beta || 0) - 25)); /* -25° for natural phone hold */
