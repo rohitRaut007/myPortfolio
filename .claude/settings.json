@@ -15,7 +15,20 @@
       "Bash(sed 's/<svg role=\"img\" viewBox=\"0 0 24 24\"/<svg role=\"img\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"/' \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
       "Bash(cp /tmp/apple-fixed.svg \"e:/myPortfolio/src/assets/images/apple-logo.svg\")",
       "Bash(grep -rn --include=\"*.js\" -E \"\\(color|background|fill|stroke|borderColor\\).*['\\\\\"]#[0-9a-fA-F]{3,6}['\\\\\"]|\\(color|background\\).*rgba\\\\\\([0-9]\" e:/myPortfolio/src/components/)",
-      "Bash(grep -v \"//.*#\")"
+      "Bash(grep -v \"//.*#\")",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(chromium-cli --help)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(npx --yes playwright --version)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(timeout 60 bash -c 'until curl -sf http://localhost:3000 >/dev/null 2>&1; do sleep 2; done')",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(node -e ' *)",
+      "Bash(tail -n 40 /tmp/claude/e--myPortfolio/dev-server.log 2>/dev/null || echo \"no log at that path\")",
+      "Read(//tmp/claude/e--myPortfolio/**)",
+      "Bash(node \"C:\\\\Users\\\\devil\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\e--myPortfolio\\\\763fe687-97e3-4593-b2bd-c10543387b63\\\\scratchpad\\\\check.js\")",
+      "Bash(node \"C:\\\\Users\\\\devil\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\e--myPortfolio\\\\763fe687-97e3-4593-b2bd-c10543387b63\\\\scratchpad\\\\check2.js\")"
     ]
   }
 }

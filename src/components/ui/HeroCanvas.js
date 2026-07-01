@@ -125,10 +125,27 @@ const HeroCanvas = ({ onPlatformChange }) => {
         S.boxCy  = S.H * 0.30;
         S.boxSize = S.W * 0.60;   /* bigger and more prominent */
       } else {
-        /* Desktop: right column, upper zone */
-        S.boxCx  = S.W * 0.74;
-        S.boxCy  = S.H * 0.20;
-        S.boxSize = Math.min(S.W, S.H) * 0.36;
+        /*
+         * Desktop: anchor to RightBanner's reserved logo slot (the flex:2
+         * spacer above the terminal card) instead of guessing a % of the
+         * full section height. The section's height is driven by whichever
+         * column (Left/Right) is taller, so a fixed ratio drifts the logo
+         * into the terminal whenever LeftBanner's content grows — anchoring
+         * to the real slot rect keeps it correct regardless of content length.
+         */
+        const slot = document.getElementById("hero-logo-slot");
+        const wrapRect = wrap ? wrap.getBoundingClientRect() : null;
+        const slotRect = slot ? slot.getBoundingClientRect() : null;
+        if (slotRect && wrapRect && slotRect.width > 0 && slotRect.height > 0) {
+          S.boxCx   = (slotRect.left - wrapRect.left) + slotRect.width / 2;
+          S.boxCy   = (slotRect.top - wrapRect.top) + slotRect.height / 2;
+          S.boxSize = Math.min(slotRect.width, slotRect.height) * 0.92;
+        } else {
+          /* Fallback if the slot isn't mounted/measurable yet */
+          S.boxCx  = S.W * 0.74;
+          S.boxCy  = S.H * 0.28;
+          S.boxSize = Math.min(S.W, S.H) * 0.42;
+        }
       }
 
       if (S.nodes.length) initNodes();
@@ -141,8 +158,8 @@ const HeroCanvas = ({ onPlatformChange }) => {
         y: S.boxCy + (Math.random() - 0.5) * S.H,
         vx: 0, vy: 0,
         seed: Math.random() * Math.PI * 2,
-        sz: 0.7 + Math.random() * 1.5,
-        br: 0.45 + Math.random() * 0.55,
+        sz: 0.9 + Math.random() * 1.8,
+        br: 0.60 + Math.random() * 0.40,
       }));
     };
 
@@ -201,7 +218,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
           const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
           const d = Math.hypot(dx, dy);
           if (d < 150) {
-            ctx.strokeStyle = `rgba(${RGB},${((1 - d / 150) * 0.10).toFixed(3)})`;
+            ctx.strokeStyle = `rgba(${RGB},${((1 - d / 150) * 0.18).toFixed(3)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x + ox, nodes[i].y + oy);
@@ -223,7 +240,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
           }
         }
       }
-      ctx.fillStyle = `rgba(${RGB},0.5)`;
+      ctx.fillStyle = `rgba(${RGB},0.7)`;
       for (const n of nodes) {
         ctx.beginPath(); ctx.arc(n.x + ox, n.y + oy, 1.2, 0, 6.2832); ctx.fill();
       }
@@ -251,7 +268,7 @@ const HeroCanvas = ({ onPlatformChange }) => {
       const pulse = Math.max(0, 1 - (t - S.lastMorph) / 1500);
       const gx = boxCx + offx, gy = boxCy + offy;
       const gr = ctx.createRadialGradient(gx, gy, 0, gx, gy, boxSize * 0.78);
-      gr.addColorStop(0, `rgba(${RGB},${(0.05 + 0.13 * pulse).toFixed(3)})`);
+      gr.addColorStop(0, `rgba(${RGB},${(0.10 + 0.18 * pulse).toFixed(3)})`);
       gr.addColorStop(1, `rgba(${RGB},0)`);
       ctx.fillStyle = gr;
       ctx.beginPath(); ctx.arc(gx, gy, boxSize * 0.78, 0, 6.2832); ctx.fill();
@@ -282,8 +299,8 @@ const HeroCanvas = ({ onPlatformChange }) => {
         p.x += p.vx; p.y += p.vy;
 
         const wob = Math.sin(t * 0.001 + p.seed) * 0.5;
-        const tw  = 0.55 + 0.45 * Math.sin(t * 0.0016 + p.seed * 3);
-        ctx.fillStyle = `rgba(${RGB},${(0.58 * p.br * tw).toFixed(3)})`;
+        const tw  = 0.65 + 0.35 * Math.sin(t * 0.0016 + p.seed * 3);
+        ctx.fillStyle = `rgba(${RGB},${(0.78 * p.br * tw).toFixed(3)})`;
         ctx.beginPath(); ctx.arc(p.x + wob, p.y + wob, p.sz, 0, 6.2832); ctx.fill();
       }
       ctx.globalCompositeOperation = "source-over";

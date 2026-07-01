@@ -108,13 +108,18 @@ const RightBanner = ({ platform = "ios" }) => {
   const currentSnip = SNIPPETS[codeState.snip];
 
   return (
-    <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "auto" }}>
+    <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "18px" }}>
 
-      {/* Top 40% — floating icons zone (HeroCanvas renders here) */}
-      <div style={{ flex: 2 }} />
+      {/*
+        Logo zone — HeroCanvas anchors its morphing logo here via #hero-logo-slot.
+        Explicit min-height (not flex-grow) so it always gets real room: a flex
+        column's items don't shrink below their content size by default, so the
+        terminal below was eating almost all the space and leaving the slot ~100px.
+      */}
+      <div id="hero-logo-slot" style={{ minHeight: "clamp(160px, 20vw, 210px)" }} />
 
-      {/* Bottom 60% — terminal */}
-      <div style={{ flex: 3, display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: "14px" }}>
+      {/* Terminal */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
 
       {/* Status bar */}
       <div style={{
@@ -199,7 +204,7 @@ const RightBanner = ({ platform = "ios" }) => {
         </div>
       </div>
 
-      </div>{/* end bottom 50% */}
+      </div>{/* end terminal */}
     </div>
   );
 };
